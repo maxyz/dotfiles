@@ -1,0 +1,10 @@
+# Move configurations to .config dirs
+export ZDOTDIR=~/.config/zsh
+
+# Prepend ~/bin
+typeset -U PATH path
+path=( ~/bin ~/.local/bin $path )
+
+if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprofile"
+fi

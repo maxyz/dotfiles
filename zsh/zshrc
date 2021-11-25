@@ -1,0 +1,124 @@
+# Recompile configuration if needed:
+autoload -Uz zrecompile
+zrecompile -q -p -R ${ZDOTDIR}/.zshrc -- \
+    -R ${ZDOTDIR}/.zpreztorc -- \
+    -M ${ZDOTDIR}/.zcompdump
+    # -R ${ZDOTDIR}/.p10k.ascii.zsh -- \
+    # -R ${ZDOTDIR}/.p10k.full.zsh -- \
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# if [[ $TERM != linux* ]] && [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+# [[ $TERM == linux* ]] && [[ -f ${ZDOTDIR}/.p10k.ascii.zsh ]] && source ${ZDOTDIR}/.p10k.ascii.zsh || true
+# [[ $TERM != linux* ]] && [[ -f ${ZDOTDIR}/.p10k.full.zsh ]] && source ${ZDOTDIR}/.p10k.full.zsh || true
+
+if [[ ! -d "$ZDOTDIR/.zprezto" ]]; then
+    git clone --recursive https://github.com/sorin-ionescu/prezto.git "$ZDOTDIR/.zprezto"
+fi
+
+source "$ZDOTDIR/.zprezto/init.zsh"
+# Force prompt in linux terminal
+[[ $TERM == linux* ]] && prompt "powerlevel10k"
+
+# zstyle ':prezto:module:editor:info:keymap:primary' format ' %B%F{green}%%%f%b'
+# zstyle ':prezto:module:editor:info:keymap:alternate' format ' %B%F{yellow}:%f%b'
+
+# fix highlighter values commented lines
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[comment]='none'
+
+# Override the prezto environment default
+setopt check_jobs
+
+# Keep 16384 lines of history within the shell and save it to ~/.config/zsh/history:
+HISTSIZE=16384
+SAVEHIST=16384
+HISTFILE=${ZDOTDIR}/history
+# setopt no_share_history
+
+# Pushd
+DIRSTACKSIZE=16
+setopt pushd_minus
+
+# Force file name completion on C-x TAB, Shift-TAB.
+zle -C complete-files complete-word _generic
+zstyle ':completion:complete-files:*' completer _files
+bindkey "^X^I" complete-files
+bindkey "^[[Z" complete-files
+
+# Force menu on C-x RET.
+zle -C complete-first complete-word _generic
+zstyle ':completion:complete-first:*' menu yes
+bindkey "^X^M" complete-first
+
+# Comments in the command line
+setopt interactive_comments
+
+# Turn on the more powerful pattern matching features.
+setopt extended_glob
+
+case "$COLORTERM" in
+    gnome-terminal)
+        export TERM=xterm-256color
+        ;;
+esac
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[[ -x /usr/bin/lesspipe ]] && eval "$(lesspipe)"
+
+# Aliases
+
+# enable color support of ls and also add handy aliases
+alias dir='dir --group-directories-first --color=auto'
+alias vdir='vdir --group-directories-first --color=auto'
+
+alias fgrep='grep -F'
+alias egrep='grep -E'
+
+alias cd..='cd ..'
+alias tmux='tmux -2'
+
+# Interactive environment
+export CVS_RSH=ssh
+
+export PYTHONSTARTUP=~/.config/python/startup
+
+export PYFLAKES_BUILTINS='_'
+
+# Go
+export -TU GOPATH gopath
+gopath=( ~/src/go(/N) $gopath /usr/share/gocode(/N) )
+# export GOPATH="$HOME/src/go"
+# export GOROOT="/usr/share/gocode"
+# Add gopath bin dirs to the path (only if they exists)
+typeset -U PATH path
+path=( ${^gopath}/bin(/N) $path )
+
+# Rust
+path=( ~/.cargo/bin(/N) $path )
+
+# Node
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# path=( ~/.yarn/bin(/N) $path )
+
+# aws cli
+# if [[ -x ~/.local/bin/aws_completer ]]; then
+#     autoload bashcompinit && bashcompinit
+#     complete -C '~/.local/bin/aws_completer' aws
+# fi
+
+# Import local configurations
+[[ ! -f ~/.config/zsh/local.zsh ]] || source ~/.config/zsh/local.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
