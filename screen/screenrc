@@ -1,0 +1,31 @@
+# Known bug work arround
+defflow off # will force screen to process ^S/^Q
+
+# set some options
+activity "activity: window %"	# Message when activity occurs in a window 
+vbell_msg "bell: window %"	# Message for visual bell
+vbellwait 2                     # Seconds to pause the screen for visual bell
+autodetach on                   # Autodetach session on hangup instead of
+                                # terminating screen completely
+chdir                           # Change to the home directory
+defscrollback 5000              # Set the default number of scrollback lines
+deflogin off                   # Do not register the window in utmp
+startup_message off             # Disable startup messages
+
+screen -t shell -h 5000
+                                # Start a shell with the title of
+                                # bash@. Use a scrollback of 5000 lines and
+				# start the shell in window 4
+				# (or the next available window)
+
+monitor on                      # Monitor the above shell window
+
+vbell on
+windows
+
+# An alternative hardstatus to display a bar at the bottom listing the
+# windownames and highlighting the current windowname in blue. (This is
+# only enabled if there is no hardstatus setting for your terminal)
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{.bW}%-Lw%{.rW}%25>%n%f* %t%{-}%+Lw%59< %=%{..G} %H %{..Y} %Y-%m-%d %c "
