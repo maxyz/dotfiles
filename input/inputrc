@@ -1,0 +1,9 @@
+
+set completion-ignore-case on
+
+set input-meta on
+set output-meta on
+
+set show-all-if-unmodified on
+set visible-stats on
+
