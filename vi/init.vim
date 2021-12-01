@@ -742,19 +742,20 @@ Plug 'dahu/VimLint'
 "  Plugin for checking your Vim configuration for correctness.
 
 if executable('rustc')
-    Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+    " Already managed by polyglot
+    " Plug 'rust-lang/rust.vim', { 'for': 'rust' }
     " Vim configuration for Rust.
     let g:rustfmt_autosave = 1
 
-    if executable('racer')
-        Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-        " Racer support for Vim
-        let g:racer_experimental_completer = 1
-
-        au FileType rust nmap <leader>rx <Plug>(rust-doc)
-        au FileType rust nmap <leader>rd <Plug>(rust-def)
-        au FileType rust nmap <leader>rs <Plug>(rust-def-split)
-    endif
+    " if executable('racer')
+    "     Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+    "     " Racer support for Vim
+    "     let g:racer_experimental_completer = 1
+    "
+    "     au FileType rust nmap <leader>rx <Plug>(rust-doc)
+    "     au FileType rust nmap <leader>rd <Plug>(rust-def)
+    "     au FileType rust nmap <leader>rs <Plug>(rust-def-split)
+    " endif
 endif
 
 ""
@@ -879,18 +880,30 @@ highlight link ALEWarning Todo
 " " Set this in your vimrc file to disabling highlighting
 " let g:ale_set_highlights = 0
 
+let g:ale_linters.rust = []
+
 if executable('cargo-clippy')
     let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 endif
 
 if executable('rls')
-    let g:ale_linters.rust = ['rls']
-    let g:ale_rust_rls_config = {
-          \ 'rust': {
-          \     'build_on_save': v:true,
-          \     'clippy_preference': 'on'
-          \ }
-    \ }
+    let g:ale_rust_rls_executable = exepath('rls')
+    call add(g:ale_linters.rust, 'rls')
+else
+    call add(g:ale_linters.rust, 'cargo')
+endif
+
+if executable('cargo-clippy') && executable('rls')
+    " let g:ale_rust_rls_config = {
+    "       \ 'rust': {
+    "       \     'build_on_save': v:true,
+    "       \     'clippy_preference': 'on'
+    "       \ }
+    " \ }
+endif
+
+if executable('rust-analyzer')
+    call add(g:ale_linters.rust, 'analyzer')
 endif
 
 nnoremap <silent> <leader>ah :ALEHover<CR>
@@ -1017,6 +1030,11 @@ Plug 'machakann/vim-highlightedyank'
 " Make the yanked region apparent!
 if !exists('##TextYankPost')
     map y <Plug>(highlightedyank)
+endif
+
+if has('nvim')
+    Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
+    " display interactive vertical scrollbars
 endif
 
 ""
