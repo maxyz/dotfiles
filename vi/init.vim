@@ -1,17 +1,18 @@
 " no vi-compatible
 set nocompatible
 
-" git plugins not managed by Vundle
+" git plugins not managed by Plug
 " git clone https://github.com/vim-scripts/mutt-aliases.git ~/.vim/scripts/mutt-aliases
-
-let g:mutt_aliases_file = '~/.mutt/aliases'
-augroup mutt_alias
-    autocmd!
-    autocmd BufRead /tmp/mutt-* source ~/.vim/scripts/mutt-aliases/plugin/mutt-aliases.vim
-    autocmd BufRead /tmp/neomutt-* source ~/.vim/scripts/mutt-aliases/plugin/mutt-aliases.vim
-    autocmd BufRead /tmp/*/mutt-* source ~/.vim/scripts/mutt-aliases/plugin/mutt-aliases.vim
-    autocmd BufRead /tmp/*/neomutt-* source ~/.vim/scripts/mutt-aliases/plugin/mutt-aliases.vim
-augroup END
+if len(glob('~/.vim/scripts/mutt_aliases/plugin/mutt-aliases.vim'))
+    let g:mutt_aliases_file = '~/.mutt/aliases'
+    augroup mutt_alias
+        autocmd!
+        autocmd BufRead /tmp/mutt-* source ~/.vim/scripts/mutt-aliases/plugin/mutt-aliases.vim
+        autocmd BufRead /tmp/neomutt-* source ~/.vim/scripts/mutt-aliases/plugin/mutt-aliases.vim
+        autocmd BufRead /tmp/*/mutt-* source ~/.vim/scripts/mutt-aliases/plugin/mutt-aliases.vim
+        autocmd BufRead /tmp/*/neomutt-* source ~/.vim/scripts/mutt-aliases/plugin/mutt-aliases.vim
+    augroup END
+endif
 
 " per system plugin configurations:
 
@@ -22,6 +23,7 @@ function! UpdateRPlugin(info)
     endif
 endfunction
 
+" Install plug if not present
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -51,13 +53,6 @@ Plug 'tpope/vim-sensible'
 " * nmap Y y$: Make Y behave like C and D.
 " * runtime! macros/matchit.vim: Load the version of matchit.vim that ships
 "            with Vim.
-
-if has('multi_byte')
-    set listchars=tab:▸\ ,trail:Ξ,extends:>,precedes:<,nbsp:␠,eol:¶
-    if has("patch-7.4.826")
-        set listchars+=space:·
-    endif
-endif
 
 Plug 'andymass/vim-matchup'
 " vim match-up: even better % :facepunch: navigate and highlight matching words :facepunch: modern matchit a
@@ -242,7 +237,6 @@ Plug 'lambdalisue/suda.vim'
 " save as sudo
 " cabbrev w!! w !sudo tee "%" > /dev/null
 
-
 Plug 'vim-scripts/a.vim'
 " Alternate Files quickly (.c --> .h etc)
 "
@@ -414,18 +408,9 @@ Plug 'kana/vim-textobj-entire'
 
 Plug 'ogier/guessindent'
 " The Guess Indent Plugin
-let g:guessindent_prefer_tabs = 0
-
-" Part of the guessindent plugin, needs to be after the filetype is enabled
-autocmd BufReadPost * :GuessIndent
 
 Plug 'nathanaelkane/vim-indent-guides'
 " A Vim plugin for visually displaying indent levels in code
-
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_color_change_percent  = 7
-
-let g:indent_guides_auto_colors = 1
 
 Plug 'michaeljsmith/vim-indent-object'
 " Indent text object
@@ -449,7 +434,210 @@ if executable('fzf')
 
     Plug 'junegunn/fzf.vim'
     " :cherry_blossom: A command-line fuzzy finder
+else
+    Plug 'ctrlpvim/ctrlp.vim'
+    " Active fork of kien/ctrlp.vim—Fuzzy file, buffer, mru, tag, etc finder.
 
+    " Once CtrlP is open:
+    "
+    " Press <F5> to purge the cache for the current directory to get new files,
+    " remove deleted files and apply new ignore options.
+    " Press <c-f> and <c-b> to cycle between modes.
+    " Press <c-d> to switch to filename only search instead of full path.
+    " Press <c-r> to switch to regexp mode.
+    " Use <c-j>, <c-k> or the arrow keys to navigate the result list.
+    " Use <c-t> or <c-v>, <c-x> to open the selected entry in a new tab or in a
+    " new split.
+    " Use <c-n>, <c-p> to select the next/previous string in the prompt's history.
+    " Use <c-y> to create a new file and its parent directories.
+    " Use <c-z> to mark/unmark multiple files and <c-o> to open them.
+
+    Plug 'fisadev/vim-ctrlp-cmdpalette'
+    " ctrlp fuzzy command finder
+
+    " commands finder mapping
+    " nmap <Leader>sk :CtrlPCmdPalette<CR>
+
+    Plug 'tacahiroy/ctrlp-funky'
+    " Very simple function nativator for ctrlp.vim
+    " Search definitions
+    " nmap <Leader>sd :CtrlPFunky<CR>
+    " narrow the list down with a word under cursor
+    " nmap <Leader>sD :execute 'CtrlPFunky ' . expand('<cword>')<CR>
+
+    Plug 'ivan-cukic/vim-ctrlp-switcher'
+    " extension for switching between header and source files which supports
+    " private classes
+    " nmap <Leader>sS :CtrlPSwitch<CR>
+endif
+
+Plug 'nelstrom/vim-visual-star-search'
+" Start a * or # search from a visual block
+
+" This allows you to select some text using Vim's visual mode and then hit *
+" and # to search for it elsewhere in the file.  For example, hit V, select
+" a strange sequence of characters like "$! $!", and hit star.  You'll find
+" all other runs of "$! $!" in the file.
+
+" If you hit <leader>* ("\*" unless you changed the mapleader), vim will
+" recursively vimgrep for the word under the cursor or the visual selection.
+
+" Vim's default behavior is to just extend the visual selection to the next
+" word that matches the word under the cursor.  Doesn't seem very useful.
+
+Plug 'henrik/vim-indexed-search'
+" Search results counter
+
+""
+" Languages
+""
+
+let g:polyglot_disabled = ['sensible']
+
+Plug 'sheerun/vim-polyglot'
+" A solid language pack for Vim.
+
+
+if has("patch-7.4.826")
+    Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+    " UltiSnips - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips
+endif
+
+" html
+Plug 'mattn/emmet-vim', {'for': 'html'}
+" Ex Zen coding, now emmet
+
+" haskell
+if executable('ghc')
+    Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
+    " Syntax Highlighting and Indentation for Haskell and Cabal
+endif
+
+" go
+if executable('go')
+    Plug 'fatih/vim-go', {'for': 'go'}
+    " Go development plugin
+endif
+
+" vim
+Plug 'dahu/VimLint'
+"  Plugin for checking your Vim configuration for correctness.
+
+""
+" Ide like features
+""
+
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    " Yet Another Remote Plugin Framework for Neovim
+    Plug 'roxma/vim-hug-neovim-rpc'
+    " a compatibility layer for neovim rpc client working on vim8
+endif
+" :stars: Dark powered asynchronous completion framework for neovim
+
+Plug 'Shougo/context_filetype.vim'
+" Provides functions to find fenced code blocks and their filetype.
+" For example Javascript blocks inside of HTML.
+" The fenced code is detected by predefined regular expressions.
+
+Plug 'deoplete-plugins/deoplete-jedi', { 'do': function('UpdateRPlugin')}
+" deoplete.nvim source for python and jedi
+
+Plug 'wellle/tmux-complete.vim'
+" Vim plugin for insert mode completion of words in adjacent tmux panes
+
+Plug 'dense-analysis/ale'
+" Asynchronous linting/fixing for Vim and Language Server Protocol (LSP) integration
+
+""
+" Vcs
+""
+
+Plug 'tpope/vim-fugitive'
+" a Git wrapper so awesome, it should be illegal
+
+Plug 'airblade/vim-gitgutter'
+" A Vim plugin which shows a git diff in the 'gutter' (sign column). It shows
+" which lines have been added, modified, or removed. You can also preview,
+" stage, and undo individual hunks.
+
+""
+" Widgets
+""
+
+Plug 'vim-airline/vim-airline'
+" Airline
+
+Plug 'scrooloose/nerdtree'
+" Better file browser
+
+Plug 'majutsushi/tagbar'
+" Class/module browser
+
+Plug 'sjl/gundo.vim'
+" Graph your undo tree so you can actually USE it.
+
+Plug 'Valloric/ListToggle'
+" A simple vim plugin for toggling the display of the quickfix list and the
+" location-list.
+
+Plug 'thinca/vim-quickrun'
+" Run a command and show its result quickly.
+
+Plug 'machakann/vim-highlightedyank'
+" Make the yanked region apparent!
+
+if has('nvim')
+    Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
+    " display interactive vertical scrollbars
+endif
+
+""
+" Themes
+""
+
+Plug 'vim-airline/vim-airline-themes'
+" Airline Themes
+
+" Plug 'flazz/vim-colorschemes'
+" one colorscheme pack to rule them all!
+
+Plug 'rafi/awesome-vim-colorschemes'
+" Collection of awesome color schemes for Vim, merged for quick use
+
+Plug 'hallison/vim-darkdevel'
+" color scheme that supports the 8, 16 and 256 colors in XTerm mode.
+
+" Plug 'ryanoasis/vim-devicons'
+" :symbols: adds font icons (glyphs ★♨☢) to programming languages, libraries,
+" and web developer filetypes for: NERDTree, powerline, vim-airline, ctrlp,
+" unite, lightline.vim, vim-startify, vimfiler, and flagship
+
+call plug#end()
+
+" sensible listchars tweak
+if has('multi_byte')
+    set listchars=tab:▸\ ,trail:Ξ,extends:>,precedes:<,nbsp:␠,eol:¶
+    if has("patch-7.4.826")
+        set listchars+=space:·
+    endif
+endif
+
+" guessindent configuration
+let g:guessindent_prefer_tabs = 0
+" Part of the guessindent plugin, needs to be after the filetype is enabled
+autocmd BufReadPost * :GuessIndent
+
+" vim-indent-guides configuration
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_color_change_percent  = 7
+let g:indent_guides_auto_colors = 1
+
+if executable('fzf')
+    " fzf configuration
     command! -bang -nargs=? -complete=dir Files
         \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
@@ -488,25 +676,8 @@ if executable('fzf')
 
     " Advanced customization using autoload functions
     " inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
-
 else
-    Plug 'ctrlpvim/ctrlp.vim'
-    " Active fork of kien/ctrlp.vim—Fuzzy file, buffer, mru, tag, etc finder.
-
-    " Once CtrlP is open:
-    "
-    " Press <F5> to purge the cache for the current directory to get new files,
-    " remove deleted files and apply new ignore options.
-    " Press <c-f> and <c-b> to cycle between modes.
-    " Press <c-d> to switch to filename only search instead of full path.
-    " Press <c-r> to switch to regexp mode.
-    " Use <c-j>, <c-k> or the arrow keys to navigate the result list.
-    " Use <c-t> or <c-v>, <c-x> to open the selected entry in a new tab or in a
-    " new split.
-    " Use <c-n>, <c-p> to select the next/previous string in the prompt's history.
-    " Use <c-y> to create a new file and its parent directories.
-    " Use <c-z> to mark/unmark multiple files and <c-o> to open them.
-
+    " ctrlp configuration
     function! CtrlPWithSearchText(search_text, ctrlp_command_end)
         execute ':CtrlP' . a:ctrlp_command_end
         call feedkeys(a:search_text)
@@ -530,282 +701,32 @@ else
         \ 'file': '\v\.(exe|so|dll|png|jpg|jpeg|pyc|pyo)$',
         \ }
 
-    Plug 'fisadev/vim-ctrlp-cmdpalette'
-    " ctrlp fuzzy command finder
-
-    " commands finder mapping
-    " nmap <Leader>sk :CtrlPCmdPalette<CR>
-
-    Plug 'tacahiroy/ctrlp-funky'
-    " Very simple function nativator for ctrlp.vim
-    " Search definitions
-    " nmap <Leader>sd :CtrlPFunky<CR>
-    " narrow the list down with a word under cursor
-    " nmap <Leader>sD :execute 'CtrlPFunky ' . expand('<cword>')<CR>
-
-    Plug 'ivan-cukic/vim-ctrlp-switcher'
-    " extension for switching between header and source files which supports
-    " private classes
-    " nmap <Leader>sS :CtrlPSwitch<CR>
-
     let g:ctrlp_extensions = ['funky', 'switcher']
-
 endif
 
-Plug 'nelstrom/vim-visual-star-search'
-" Start a * or # search from a visual block
-
-" This allows you to select some text using Vim's visual mode and then hit *
-" and # to search for it elsewhere in the file.  For example, hit V, select
-" a strange sequence of characters like "$! $!", and hit star.  You'll find
-" all other runs of "$! $!" in the file.
-
-" If you hit <leader>* ("\*" unless you changed the mapleader), vim will
-" recursively vimgrep for the word under the cursor or the visual selection.
-
-" Vim's default behavior is to just extend the visual selection to the next
-" word that matches the word under the cursor.  Doesn't seem very useful.
-
-Plug 'henrik/vim-indexed-search'
-" Search results counter
-
-""
-" Languages
-""
-
-Plug 'sheerun/vim-polyglot'
-" A solid language pack for Vim.
-
-let g:polyglot_disabled = ['sensible']
-
+" polyglot configuration
 " Individual language packs can be disabled by setting g:polyglot_disabled.
 " let g:polyglot_disabled = ['css']
+let g:rustfmt_autosave = 1
 
-if has("patch-7.4.826")
-    Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-    " UltiSnips - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips
-    " vim-snipmate default snippets (Previously snipmate-snippets)
-    let g:UltiSnipsExpandTrigger        = "<C-j>"
-    let g:UltiSnipsJumpForwardTrigger	= "<C-j>"
-    let g:UltiSnipsJumpBackwardTrigger	= "<C-k>"
-    let g:UltiSnipsRemoveSelectModeMappings = 0
-endif
+" ultisnips configuration
+" vim-snipmate default snippets (Previously snipmate-snippets)
+let g:UltiSnipsExpandTrigger        = "<C-j>"
+let g:UltiSnipsJumpForwardTrigger	= "<C-j>"
+let g:UltiSnipsJumpBackwardTrigger	= "<C-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
 
-"" " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"" let g:UltiSnipsExpandTrigger       = '<C-j>'
-"" " let g:UltiSnipsListSnippets        = '<C-k>'
-"" let g:UltiSnipsJumpForwardTrigger  = '<C-j>'
-"" let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-""
-"" " If you want :UltiSnipsEdit to split your window.
-"" let g:UltiSnipsEditSplit           = 'vertical'
 
-" html
-Plug 'mattn/emmet-vim', {'for': 'html'}
-" Ex Zen coding, now emmet
-
-" haskell
-if executable('ghc')
-    Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
-    " Syntax Highlighting and Indentation for Haskell and Cabal
-endif
-
-" go
-if executable('go')
-    Plug 'fatih/vim-go', {'for': 'go'}
-    " Go development plugin
-    " Features
-
-    "     Improved Syntax highlighting, such as Functions, Operators, Methods..
-    "     Auto completion support via gocode
-    "     Better gofmt on save, keeps cursor position and doesn't break your undo
-    "     history
-    "     Go to symbol/declaration with :GoDef
-    "     Look up documentation with :GoDoc inside Vim or open it in browser.
-    "     Automatically import packages via :GoImport or plug it into autosave
-    "     Compile your package with :GoBuild , install it with :GoInstall
-    "     :GoRun quickly your current file/files
-    "     Run :GoTest and see any errors in quickfix window
-    "     Automatic GOPATH detection based on the directory structure (i.e: godep
-    "     vendored projects)
-    "     Change GOPATH with :GoPath, restore back to original at any time with
-    "     :GoPathClear
-    "     Create a coverage profile and display annotated source code in browser
-    "     to see which functions are covered with :GoCoverage
-    "     Lint your code with :GoLint
-    "     Run your code through :GoVet to catch static errors.
-    "     Advanced source analysis tool with oracle, such as :GoImplements,
-    "     :GoCallees, :GoReferrers
-    "     Precise type-safe renaming of identifiers with :GoRename
-    "     List all source files and dependencies
-    "     Checking with :GoErrCheck for unchecked errors.
-    "     Integrated and improved snippets. Supports ultisnips or neosnippet
-    "     Share your current code to play.golang.org with :GoPlay
-    "     On-the-fly type information about the word under the cursor. Plug it
-    "     into your custom vim function.
-    "     Tagbar support to show tags of the source code in a sidebar with gotags
-    "     Custom vim text objects, such a a function or inner function
-
-    " Mappings
-
-    " vim-go has several <Plug> mappings which can be used to create custom
-    " mappings. Below are some examples you might find useful:
-
-    " Run commands, such as go run with <leader>r for the current file or go build
-    " and go test for the current package with <leader>b and <leader>t. Display a
-    " beautiful annotated source code to see which functions are covered with
-    " <leader>c.
-
-    autocmd FileType go nmap <leader>r <Plug>(go-run)
-    autocmd FileType go nmap <leader>u <Plug>(go-build)
-    autocmd FileType go nmap <leader>t <Plug>(go-test)
-    autocmd FileType go nmap <leader>c <Plug>(go-coverage)
-
-    " By default the mapping gd is enabled which opens the target identifier in
-    " current buffer. You can also open the definition/declaration in a new
-    " vertical, horizontal or tab for the word under your cursor:
-
-    autocmd FileType go nmap <Leader>ds <Plug>(go-def-split)
-    autocmd FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-    autocmd FileType go nmap <Leader>dt <Plug>(go-def-tab)
-
-    " Open the relevant Godoc for the word under the cursor with <leader>dd or
-    " open it vertically with <leader>dv
-
-    autocmd FileType go nmap <Leader>dd <Plug>(go-doc)
-    autocmd FileType go nmap <Leader>dv <Plug>(go-doc-vertical)
-
-    " Or open the Godoc in browser
-
-    autocmd FileType go nmap <Leader>db <Plug>(go-doc-browser)
-
-    " Show a list of interfaces which is implemented by the type under your cursor
-    " with <leader>s
-
-    autocmd FileType go nmap <Leader>s <Plug>(go-implements)
-
-    " Show type info for the word under your cursor with <leader>i (useful if you
-    " have disabled auto showing type info via g:go_auto_type_info)
-
-    autocmd FileType go nmap <Leader>i <Plug>(go-info)
-
-    " Rename the identifier under the cursor to a new name
-
-    autocmd FileType go nmap <Leader>e <Plug>(go-rename)
-
-    " More <Plug> mappings can be seen with :he go-mappings. Also these are just
-    " recommendations, you are free to create more advanced mappings or functions
-    " based on :he go-commands.
-
-    " Settings
-
-    " Below are some settings you might find useful. For the full list see :he
-    " go-settings.
-
-    " Disable opening browser after posting to your snippet to play.golang.org:
-
-    " let g:go_play_open_browser = 0
-
-    " To show the type info for the word under the cursor
-
-    " let g:go_auto_type_info = 1
-
-    " By default vim-go shows errors for the fmt command, to disable it:
-
-    " let g:go_fmt_fail_silently = 1
-
-    " Enable goimports to automatically insert import paths instead of gofmt:
-
-    " let g:go_fmt_command = "goimports"
-
-    " Disable auto fmt on save:
-
-    " let g:go_fmt_autosave = 0
-
-    " By default binaries are installed to $GOBIN or $GOPATH/bin. To change it:
-
-    " let g:go_bin_path = expand("~/.gotools")
-    " let g:go_bin_path = "/home/fatih/.mypath"      "or give absolute path
-
-    " By default syntax-highlighting for Functions, Methods and Structs is
-    " disabled. To change it:
-
-    " let g:go_highlight_functions = 1
-    " let g:go_highlight_methods = 1
-    " let g:go_highlight_structs = 1
-    " let g:go_highlight_operators = 1
-    " let g:go_highlight_build_constraints = 1
-endif
-
-" vim
-Plug 'dahu/VimLint'
-"  Plugin for checking your Vim configuration for correctness.
-
-if executable('rustc')
-    " Already managed by polyglot
-    " Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-    " Vim configuration for Rust.
-    let g:rustfmt_autosave = 1
-
-    " if executable('racer')
-    "     Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-    "     " Racer support for Vim
-    "     let g:racer_experimental_completer = 1
-    "
-    "     au FileType rust nmap <leader>rx <Plug>(rust-doc)
-    "     au FileType rust nmap <leader>rd <Plug>(rust-def)
-    "     au FileType rust nmap <leader>rs <Plug>(rust-def-split)
-    " endif
-endif
-
-""
-" Ide like features
-""
-
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    " Yet Another Remote Plugin Framework for Neovim
-    Plug 'roxma/vim-hug-neovim-rpc'
-    " a compatibility layer for neovim rpc client working on vim8
-endif
-" :stars: Dark powered asynchronous completion framework for neovim
-
+" Deoplete configuration
 let g:deoplete#enable_at_startup = 1
-
-" call deoplete#custom#option({
-"             \ 'auto_complete_delay': 500,
-"             \ 'smart_case': v:true,
-"             \ 'yarp': v:true,
-"             \ })
-
-" let g:deoplete#auto_complete_delay = 500
-" let g:deoplete#enable_smart_case = 1
-" let g:deoplete#yarp = v:true
 
 " Toggle popup completion
 nnoremap <silent> yof :call deoplete#toggle()<cr>:echomsg "Toggling Deoplete"<cr>
 
-Plug 'Shougo/context_filetype.vim'
-" Provides functions to find fenced code blocks and their filetype.
-" For example Javascript blocks inside of HTML.
-" The fenced code is detected by predefined regular expressions.
-
-Plug 'deoplete-plugins/deoplete-jedi', { 'do': function('UpdateRPlugin')}
-" deoplete.nvim source for python and jedi
-
-" if has('nvim')
-"     Plug 'critiqjo/lldb.nvim', {'do': function('UpdateRPlugin')}
-"     " Debugger integration with a focus on ease-of-use
-" endif
-
-" When the <Enter> key is pressed while the popup menu is visible, it only
-" hides the menu. Use this mapping to close the menu and also start a new
-" line.
-" inoremap <expr> <CR> (pumvisible()?(empty(v:completed_item)?"\<C-y>\<CR>":"\<C-y>"):"\<CR>")
-" <cr> is handled by endwise ...
+call deoplete#custom#option({
+            \ 'auto_complete_delay': 500,
+            \ 'smart_case': v:true,
+            \ })
 
 " <TAB> completion
 inoremap <expr> <TAB> pumvisible()   ? "\<C-n>" : "\<TAB>"
@@ -815,12 +736,7 @@ inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 inoremap <silent> <expr> <Down> pumvisible() ? "\<C-o>gj" : "\<Down>"
 inoremap <silent> <expr> <Up> pumvisible() ? "\<C-o>gk" : "\<Up>"
 
-Plug 'wellle/tmux-complete.vim'
-" Vim plugin for insert mode completion of words in adjacent tmux panes
-
-Plug 'dense-analysis/ale'
-" Asynchronous linting/fixing for Vim and Language Server Protocol (LSP) integration
-"
+" ale configuration
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_delay = 1000
 let g:ale_lint_on_text_changed = 'never'
@@ -876,7 +792,6 @@ let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 highlight link ALEError WarningMsg
 highlight link ALEWarning Todo
 
-"
 " " Set this in your vimrc file to disabling highlighting
 " let g:ale_set_highlights = 0
 
@@ -918,13 +833,7 @@ nnoremap <silent> [w <Plug>(ale_previous)
 nnoremap <silent> ]w <Plug>(ale_next)
 nnoremap <silent> ]W <Plug>(ale_last)
 
-""
-" Vcs
-""
-
-Plug 'tpope/vim-fugitive'
-" a Git wrapper so awesome, it should be illegal
-
+" vim-fugitive configuration
 nnoremap <Leader>ga :Gwrite<Enter>
 nnoremap <Leader>gd :Gdiffsplit<Enter>
 nnoremap <Leader>gs :Git<Enter>
@@ -938,18 +847,6 @@ nnoremap <Leader>gb :Git blame<Enter>
 "                         recognized by |:Gedit|).
 
 " ["x]y<C-G>              Yank the commit SHA and path to the current object.
-
-Plug 'airblade/vim-gitgutter'
-" A Vim plugin which shows a git diff in the 'gutter' (sign column). It shows
-" which lines have been added, modified, or removed. You can also preview,
-" stage, and undo individual hunks.
-
-""
-" Widgets
-""
-
-Plug 'vim-airline/vim-airline'
-" Airline
 
 " vim-airline settings
 if $TERM =~? '^linux'
@@ -987,84 +884,37 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 " airline takes care of showing the current mode
 set noshowmode
 
-Plug 'scrooloose/nerdtree'
-" Better file browser
-
-" NERDTree (better file browser) toggle
+" nerdtree configuration
 map <F3> :NERDTreeToggle<CR>
 " open nerdtree with the current file selected
 nmap <Leader>f :NERDTreeFind<CR>
 " Ignore files on NERDTree
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
-Plug 'majutsushi/tagbar'
-" Class/module browser
-
-" toggle Tagbar display
+" tagbar configuration
 nnoremap <F4> :TagbarToggle<CR>
 " autofocus on Tagbar open
 let g:tagbar_autofocus = 1
 
-Plug 'sjl/gundo.vim'
-" Graph your undo tree so you can actually USE it.
+" gundo configuration
 nnoremap <F6> :GundoToggle<CR>
 
 let g:gundo_prefer_python3 = 1
 
-Plug 'Valloric/ListToggle'
-" A simple vim plugin for toggling the display of the quickfix list and the
-" location-list.
-
+" ListToggle configuration
 let g:lt_location_list_toggle_map = '=oL'
 let g:lt_quickfix_list_toggle_map = '=oC'
-
 " By default, they are set to <leader>l and <leader>q, respectively.
 
-Plug 'thinca/vim-quickrun'
-" Run a command and show its result quickly.
+" quickrun configuration
 let g:quickrun_no_default_key_mappings = 1
 silent! nnoremap <unique> <F5> <Plug>(quickrun)
 " <Leader>r                <Plug>(quickrun) " default
 
-Plug 'machakann/vim-highlightedyank'
-" Make the yanked region apparent!
+" vim-highlightedyank
 if !exists('##TextYankPost')
     map y <Plug>(highlightedyank)
 endif
-
-if has('nvim')
-    Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
-    " display interactive vertical scrollbars
-endif
-
-""
-" Themes
-""
-
-Plug 'vim-airline/vim-airline-themes'
-" Airline Themes
-
-" Plug 'flazz/vim-colorschemes'
-" one colorscheme pack to rule them all!
-
-Plug 'rafi/awesome-vim-colorschemes'
-" Collection of awesome color schemes for Vim, merged for quick use
-
-Plug 'hallison/vim-darkdevel'
-" color scheme that supports the 8, 16 and 256 colors in XTerm mode.
-
-" Plug 'ryanoasis/vim-devicons'
-" :symbols: adds font icons (glyphs ★♨☢) to programming languages, libraries,
-" and web developer filetypes for: NERDTree, powerline, vim-airline, ctrlp,
-" unite, lightline.vim, vim-startify, vimfiler, and flagship
-
-call plug#end()
-
-" Deoplete configuration
-call deoplete#custom#option({
-            \ 'auto_complete_delay': 500,
-            \ 'smart_case': v:true,
-            \ })
 
 " Edit vimrc
 nnoremap <leader>ev :edit $MYVIMRC<cr>
@@ -1089,18 +939,6 @@ if has('nvim') && has("termguicolors") && ($COLORTERM =~? 'truecolor\|24bit' || 
     " Enable true color, if possible
     set termguicolors
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-
-" From defaults.vim, otherwise vim8 starts without syntax
-" Switch syntax highlighting on when the terminal has colors or when using the
-" GUI (which always has colors).
-if &t_Co > 2 || has("gui_running")
-    " Revert with ":syntax off".
-    syntax on
-
-    " I like highlighting strings inside C comments.
-    " Revert with ":unlet c_comment_strings".
-    let c_comment_strings=1
 endif
 
 function! SwitchTheme(colorscheme)
@@ -1128,7 +966,7 @@ function! SwitchTheme(colorscheme)
         execute "colorscheme " . a:colorscheme
         let g:airline_theme = a:colorscheme
         if exists(":AirlineTheme")
-            execute AirlineTheme a:colorscheme
+            execute "AirlineTheme " . a:colorscheme
         endif
         " highlight CursorColumn term=reverse
     elseif a:colorscheme == 'darkdevel'
@@ -1174,7 +1012,7 @@ function! SwitchTheme(colorscheme)
         execute "colorscheme " . a:colorscheme
         let g:airline_theme = a:colorscheme
         if exists(":AirlineTheme")
-            execute AirlineTheme a:colorscheme
+            execute "AirlineTheme " . a:colorscheme
         endif
         " highlight CursorColumn term=reverse
     elseif a:colorscheme == 'mountaineer'
@@ -1190,7 +1028,7 @@ function! SwitchTheme(colorscheme)
         execute "colorscheme " . a:colorscheme
         let g:airline_theme = a:colorscheme
         if exists(":AirlineTheme")
-            execute AirlineTheme a:colorscheme
+            execute "AirlineTheme " . a:colorscheme
         endif
         " highlight CursorColumn term=reverse
     elseif a:colorscheme == 'rdark-terminal2'
@@ -1239,17 +1077,11 @@ function! SwitchThemeComplete(A, L, P)
 endfunction
 
 if ! exists("g:switchtheme#colorscheme")
-    call SwitchTheme("afterglow")
-    " call SwitchTheme("apprentice")
-    " call SwitchTheme("spacecamp")
-    " if $NVIM_TUI_ENABLE_TRUE_COLOR == 1
-    "     call SwitchTheme("afterglow")
-    "     call SwitchTheme("gruvbox")
-    " else
-    "     call SwitchTheme("focuspoint")
-    "     call SwitchTheme("afterglow")
-    "     call SwitchTheme("darkdevel")
-    " endif
+    if $TERM =~? '^linux'
+        call SwitchTheme("darkdevel")
+    else
+        call SwitchTheme("mountaineer")
+    endif
 endif
 :
 command! -nargs=1 -complete=customlist,SwitchThemeComplete SwitchTheme call SwitchTheme(<f-args>)
@@ -1360,6 +1192,11 @@ set spelllang=en_gb
 " ]s : next |  [s : prev | z= suggestions | zg ignore | zw add
 " set dictionary+=/usr/share/dict/words
 " dictionary completion (^x^k), sadly it loads the dictionary on startup.
+
+" C programming
+" I like highlighting strings inside C comments.
+" Revert with ":unlet c_comment_strings".
+let c_comment_strings=1
 
 " vim -b : edit binary using xxd-format!
 augroup Binary
