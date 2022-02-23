@@ -5,7 +5,9 @@ local b = null_ls.builtins
 
 local sources = {
   -- web world
-  b.formatting.prettierd,
+  b.formatting.prettierd.with({
+    extra_filetypes = {"javascript.jsx", "typescript.tsx"}
+  }),
 
   -- python
   b.formatting.black,
