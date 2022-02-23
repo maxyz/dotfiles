@@ -19,7 +19,6 @@ return {
   { "tpope/vim-repeat" },
   { "tpope/vim-surround" },
   { "tpope/vim-unimpaired" },
-  { "dietsche/vim-lastplace" },
   { "lambdalisue/suda.vim" },
   { "dstein64/nvim-scrollview" },
   { "sjl/gundo.vim",
