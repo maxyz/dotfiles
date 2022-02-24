@@ -9,7 +9,7 @@ M.setup_lsp = function(attach, capabilities)
 	server_installed = "﫟",
 	server_pending = "",
 	server_uninstalled = "✗",
-      }, 
+      },
     },
   }
 

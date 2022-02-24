@@ -2,7 +2,7 @@ local M = {}
 
 local userPlugins = require("custom.plugins")
 -- local configLspConfig = require "custom.configs.lspconfig"
-require("custom.configs.nvim-tree")
+local nvimTreeConfigs = require("custom.configs.nvim-tree")
 
 M.options = {
   lspconfig = {
@@ -15,7 +15,15 @@ M.ui = {
 }
 
 M.plugins = {
-  install = userPlugins
+  install = userPlugins,
+  default_plugin_config_replace = {
+    nvim_tree = nvimTreeConfigs,
+  },
+  options = {
+    nvimtree = {
+      lazy_load = false,
+    },
+  },
 }
 
 return M

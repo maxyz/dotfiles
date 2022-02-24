@@ -33,3 +33,6 @@ vim.opt.splitright = true
 -- autocompletion of files and commands behave like shell
 -- (complete only the common part, list the options that match)
 vim.opt.wildmode = "list:longest"
+
+-- Override the filetype configuration
+require("custom.configs.filetype").setup()
