@@ -11,7 +11,7 @@ M.options = {
 }
 
 M.ui = {
-   theme = "classic-dark",
+   theme = "mountain",
 }
 
 M.plugins = {
