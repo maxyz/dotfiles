@@ -26,4 +26,5 @@ return {
       vim.g.gundo_prefer_python3 = 1
     end,
   },
+  { "towolf/vim-helm" },
 }
