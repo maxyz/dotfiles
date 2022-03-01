@@ -1,11 +1,17 @@
-local g = vim.g
-
-g.nvim_tree_disable_window_picker = 1
-
 local M = {
   git = {
     enable = true,
     ignore = false,
+  },
+  update_focused_file = {
+    update_cwd = true,
+  },
+  actions = {
+    open_file = {
+      window_picker = {
+        enable = false,
+      },
+    },
   },
 }
 

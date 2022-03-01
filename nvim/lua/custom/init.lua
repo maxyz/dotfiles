@@ -4,6 +4,10 @@ local map = require("core.utils").map
 -- undo tree but better
 map("n", "<F6>", "<cmd>GundoToggle<CR>")
 
+-- find current file in tree
+map("n", "<leader>f", "<cmd>NvimTreeFindFile<CR>")
+
+-- List all things telescope
 map("n", "<leader>cc", ":Telescope <CR>")
 map("n", "<leader>q", ":q <CR>")
 
