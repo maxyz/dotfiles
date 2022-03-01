@@ -5,9 +5,6 @@ local userPlugins = require("custom.plugins")
 local nvimTreeConfigs = require("custom.configs.nvim-tree")
 
 M.options = {
-  lspconfig = {
-    setup_lspconf = "custom.configs.lspconfig",
-  }
 }
 
 M.ui = {
