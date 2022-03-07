@@ -13,6 +13,7 @@ map("n", "<leader>q", ":q <CR>")
 
 -- Don't use Ex mode, use Q for formatting
 map("n", "Q", "gq")
+map("n", "QQ", "gqq")
 
 -- NOTE: the 4th argument in the map function is be a table i.e options but its most likely un-needed so dont worry about it
 

@@ -31,7 +31,7 @@ M.setup_lsp = function(attach, capabilities)
     -- end
 
     server:setup(opts)
-    -- vim.cmd [[ do User LspAttachBuffers ]]
+    vim.cmd [[ do User LspAttachBuffers ]]
   end)
 end
 
