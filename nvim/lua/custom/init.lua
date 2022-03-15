@@ -4,10 +4,6 @@ local map = require("core.utils").map
 -- undo tree but better
 map("n", "<F6>", "<cmd>GundoToggle<CR>")
 
--- mappings for lspconfig
--- map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
--- map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>")
-
 -- find current file in tree
 -- map("n", "<leader>f", "<cmd>NvimTreeFindFile<CR>")
 

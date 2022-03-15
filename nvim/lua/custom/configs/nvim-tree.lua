@@ -1,7 +1,6 @@
 local M = {
   git = {
     enable = true,
-    ignore = false,
   },
   update_focused_file = {
     update_cwd = true,
