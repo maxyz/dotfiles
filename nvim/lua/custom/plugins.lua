@@ -4,18 +4,7 @@ return {
   {
     "williamboman/nvim-lsp-installer",
     config = function()
-      local function on_attach(client, bufnr)
-        local function buf_set_option(...)
-          vim.api.nvim_buf_set_option(bufnr, ...)
-        end
-
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-        -- Enable completion triggered by <c-x><c-o>
-        buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-        require("core.mappings").lspconfig()
-      end
+      local on_attach = require("plugins.configs.lspconfig").on_attach
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
@@ -55,17 +44,10 @@ return {
           },
           settings = {},
         }
-        -- basic example to edit lsp server's options, disabling tsserver's inbuilt formatter
-        -- if server.name == 'tsserver' then
-        -- opts.on_attach = function(client, bufnr)
-          -- client.resolved_capabilities.document_formatting = false
-          -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", {})
-          -- end
-          -- end
 
-          server:setup(opts)
-          vim.cmd [[ do User LspAttachBuffers ]]
-        end)
+        server:setup(opts)
+        vim.cmd [[ do User LspAttachBuffers ]]
+      end)
     end,
   },
   { "jose-elias-alvarez/null-ls.nvim",
