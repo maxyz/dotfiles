@@ -17,20 +17,24 @@ M.options = {
   }
 }
 
-M.ui = {
-   theme = "mountain",
-}
-
 M.plugins = {
-  install = userPlugins,
   default_plugin_config_replace = {
     nvim_tree = nvimTreeConfigs,
   },
+  install = userPlugins,
   options = {
     nvimtree = {
       lazy_load = false,
     },
   },
+  status = {
+    colorizer = true,
+    alpha = true,
+  },
+}
+
+M.ui = {
+   theme = "mountain",
 }
 
 return M
