@@ -5,7 +5,7 @@ local map = require("core.utils").map
 map("n", "<F6>", "<cmd>GundoToggle<CR>")
 
 -- find current file in tree
--- map("n", "<leader>f", "<cmd>NvimTreeFindFile<CR>")
+map("n", "<leader>e", "<cmd>NvimTreeFindFile<CR>")
 
 -- List all things telescope
 map("n", "<leader>cc", ":Telescope <CR>")

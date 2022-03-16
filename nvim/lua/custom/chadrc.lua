@@ -3,6 +3,14 @@ local M = {}
 local userPlugins = require("custom.plugins")
 local nvimTreeConfigs = require("custom.configs.nvim-tree")
 
+M.mappings = {
+  plugins = {
+    nvimtree = {
+      focus = "",
+    },
+  },
+}
+
 M.options = {
   lspconfig = {
     setup_lspconf = "custom.configs.lspconfig",
