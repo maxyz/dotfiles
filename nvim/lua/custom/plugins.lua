@@ -53,7 +53,7 @@ return {
   { "jose-elias-alvarez/null-ls.nvim",
     after = { "nvim-lspconfig", "plenary.nvim" },
     setup = function ()
-      require("custom.configs.null-ls").setup()
+      require("custom.configs.null_ls").setup()
     end,
     requires = { "plenary.nvim" },
   },
