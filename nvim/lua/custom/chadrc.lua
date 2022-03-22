@@ -13,9 +13,6 @@ M.mappings = {
 }
 
 M.options = {
-  lspconfig = {
-    setup_lspconf = "custom.configs.lspconfig",
-  }
 }
 
 M.plugins = {
@@ -28,6 +25,9 @@ M.plugins = {
     nvimtree = {
       lazy_load = false,
     },
+    lspconfig = {
+      setup_lspconf = "custom.configs.lspconfig",
+    }
   },
   status = {
     colorizer = true,
