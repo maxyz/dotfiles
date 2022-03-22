@@ -1,7 +1,8 @@
 local M = {}
 
 local userPlugins = require("custom.plugins")
-local nvimTreeConfigs = require("custom.configs.nvim-tree")
+local nvimTreeConfigs = require("custom.configs.nvim_tree")
+local cmpConfigs = require("custom.configs.cmp")
 
 M.mappings = {
   plugins = {
@@ -19,6 +20,7 @@ M.options = {
 
 M.plugins = {
   default_plugin_config_replace = {
+    nvim_cmp = cmpConfigs,
     nvim_tree = nvimTreeConfigs,
   },
   install = userPlugins,
