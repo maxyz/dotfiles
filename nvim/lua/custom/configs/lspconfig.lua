@@ -1,48 +1,34 @@
 local M = {}
 
-local enhance_server_opts = {
-  pyright = function (opts)
-    opts.settings = {
-      python = {
-        analysis = {
-          useLibraryCodeForTypes = true
-        },
-      },
-    }
-  end,
-}
-
-
 M.setup_lsp = function(attach, capabilities)
-  local lsp_installer = require("nvim-lsp-installer")
+  local lspconfig = require("lspconfig")
 
-  lsp_installer.settings {
-    ui = {
-      icons = {
-	server_installed = "✓",
-	server_pending = "",
-	server_uninstalled = "✗",
-      },
-    },
+  -- lspservers with default config
+  local servers = {
+    -- Web
+    "html",
+    "cssls",
+    "eslint",
+    -- json
+    "jsonls",
+    -- Python
+    "pyright",
+    -- Rust
+    "rust_analyzer",
+    -- C and friends
+    "clangd",
+    -- lua
+    -- "sumneko_lua",
+    -- Influx
+    "flux_lsp",
   }
 
-  lsp_installer.on_server_ready(function(server)
-    local opts = {
+  for _, lsp in ipairs(servers) do
+    lspconfig[lsp].setup({
       on_attach = attach,
       capabilities = capabilities,
-      flags = {
-	debounce_text_changes = 150,
-      },
-      settings = {},
-    }
-    if enhance_server_opts[server.name] then
-      -- Tweak opts
-      enhance_server_opts[server.name](opts)
-    end
-
-    server:setup(opts)
-    vim.cmd [[ do User LspAttachBuffers ]]
-  end)
+    })
+  end
 end
 
 return M

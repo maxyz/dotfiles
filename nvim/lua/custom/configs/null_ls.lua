@@ -1,5 +1,3 @@
-require("core.utils").packer_lazy_load "null-ls.nvim"
-
 local null_ls = require("null-ls")
 local b = null_ls.builtins
 

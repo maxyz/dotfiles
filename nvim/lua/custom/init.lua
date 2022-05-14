@@ -1,22 +1,3 @@
--- MAPPINGS
-local map = require("core.utils").map
-
--- undo tree but better
-map("n", "<F6>", "<cmd>GundoToggle<CR>")
-
--- find current file in tree
-map("n", "<leader>e", "<cmd>NvimTreeFindFile<CR>")
-
--- List all things telescope
-map("n", "<leader>cc", ":Telescope <CR>")
-map("n", "<leader>q", ":q <CR>")
-
--- Don't use Ex mode, use Q for formatting
-map("n", "Q", "gq")
-map("n", "QQ", "gqq")
-
--- NOTE: the 4th argument in the map function is be a table i.e options but its most likely un-needed so dont worry about it
-
 -- Spell check
 vim.opt.spelllang = "en_gb"
 -- unimpaired yos to toggle
@@ -38,6 +19,3 @@ vim.opt.splitright = true
 -- autocompletion of files and commands behave like shell
 -- (complete only the common part, list the options that match)
 vim.opt.wildmode = "list:longest"
-
--- Override the filetype configuration
-require("custom.configs.filetype").setup()

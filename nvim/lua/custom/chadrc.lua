@@ -4,39 +4,26 @@ local userPlugins = require("custom.plugins")
 local nvimTreeConfigs = require("custom.configs.nvim_tree")
 local cmpConfigs = require("custom.configs.cmp")
 
-M.mappings = {
-  plugins = {
-    nvimtree = {
-      focus = "",
-    },
-  },
-}
-
 M.options = {
 }
 
 M.plugins = {
-  default_plugin_config_replace = {
-    nvim_cmp = cmpConfigs,
-    nvim_tree = nvimTreeConfigs,
+  override = {
+    [ "hrsh7th/nvim-cmp" ] = cmpConfigs,
+    [ "kyazdani42/nvim-tree.lua" ] = nvimTreeConfigs,
   },
-  install = userPlugins,
+  user = userPlugins,
   options = {
-    nvimtree = {
-      lazy_load = false,
-    },
     lspconfig = {
       setup_lspconf = "custom.configs.lspconfig",
-    }
-  },
-  status = {
-    colorizer = true,
-    alpha = true,
+    },
   },
 }
 
 M.ui = {
-   theme = "mountain",
+  theme = "mountain",
 }
+
+M.mappings = require("custom.mappings")
 
 return M
