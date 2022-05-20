@@ -21,6 +21,7 @@ M.plugins = {
 }
 
 M.ui = {
+  theme_toggle = { "mountain", "one_light" },
   theme = "mountain",
 }
 
