@@ -20,10 +20,12 @@ M.telescope = {
 
 M._local = {
   n = {
-    ["<leader>q"] = { "<cmd> q <CR>", "Close current buffer" },
+    ["<leader>q"] = { "<cmd> bd <CR>", "Close current buffer" },
     ["Q"] = { "gq", "Format paragraph" },
-    ["QQ"] = { "gqq", "Format full paragraph" },
   },
+  x = {
+    ["Q"] = { "gq", "Format selection" },
+  }
 }
 
 return M

@@ -1,16 +1,18 @@
 local M = {}
 
 local userPlugins = require("custom.plugins")
-local nvimTreeConfigs = require("custom.configs.nvim_tree")
-local cmpConfigs = require("custom.configs.cmp")
 
 M.options = {
 }
 
 M.plugins = {
   override = {
-    [ "hrsh7th/nvim-cmp" ] = cmpConfigs,
-    [ "kyazdani42/nvim-tree.lua" ] = nvimTreeConfigs,
+    [ "hrsh7th/nvim-cmp" ] = function()
+      return require("custom.configs.cmp")
+    end,
+    [ "kyazdani42/nvim-tree.lua" ] = function()
+      return require("custom.configs.nvim_tree")
+    end,
   },
   user = userPlugins,
   options = {

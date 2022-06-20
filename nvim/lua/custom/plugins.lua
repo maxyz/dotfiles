@@ -4,7 +4,7 @@ return {
   -- lsp stuff
   [ "jose-elias-alvarez/null-ls.nvim" ] = {
     after = "nvim-lspconfig",
-    config = function ()
+    config = function()
       require("custom.configs.null_ls").setup()
     end,
   },
@@ -27,9 +27,8 @@ return {
   },
   -- filetypes
   [ "towolf/vim-helm" ] = {},
-  [ "goolord/alpha-nvim" ] = {
-    disable = false,
-  },
+  -- nvim tree
+  -- add findfile
   ["kyazdani42/nvim-tree.lua"] = {
     cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
   },
