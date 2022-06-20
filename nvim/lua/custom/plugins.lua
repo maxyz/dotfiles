@@ -32,4 +32,9 @@ return {
   ["kyazdani42/nvim-tree.lua"] = {
     cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
   },
+  -- jupyter integration
+  ["dccsillag/magma-nvim"] = {
+    run = ":UpdateRemotePlugins",
+    -- cmd = { "MagmaInit", },
+  },
 }

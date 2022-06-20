@@ -19,3 +19,6 @@ vim.opt.splitright = true
 -- autocompletion of files and commands behave like shell
 -- (complete only the common part, list the options that match)
 vim.opt.wildmode = "list:longest"
+
+-- Avoid showing the hiding the text with the output
+vim.g.magma_automatically_open_output = false

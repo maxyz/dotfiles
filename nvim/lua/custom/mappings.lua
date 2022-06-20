@@ -18,6 +18,19 @@ M.telescope = {
   },
 }
 
+M.magmanvim = {
+  n = {
+    ["<localleader>r"] = { "'<cmd> MagmaEvaluateOperator <CR>'", "magma evaluate operator", expr = true},
+    ["<localleader>rr"] = { "<cmd> MagmaEvaluateLine <CR>", "magma evaluate line" },
+    ["<localleader>rc"] = { "<cmd> MagmaReevaluateCell <CR>", "magma reevaluate cell" },
+    ["<localleader>rd"] = { "<cmd> MagmaDelete <CR>", "magma delete" },
+    ["<localleader>ro"] = { "<cmd> MagmaShowOutput <CR>", "magma show output" },
+  },
+  x = {
+    ["<localleader>r"] = { ":<C-u>MagmaEvaluateVisual<CR>", "magma evaluate visual" }
+  },
+}
+
 M._local = {
   n = {
     ["<leader>q"] = { "<cmd> bd <CR>", "Close current buffer" },
