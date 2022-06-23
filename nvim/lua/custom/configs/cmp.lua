@@ -13,4 +13,18 @@ M.mapping = {
   },
 }
 
+vim.g.cmp_toggle_flag = true
+
+local default_present, default = pcall(require, "cmp.config.default")
+
+if not default_present then
+   return M
+end
+
+local default_config = default()
+
+M.enabled = function()
+  return default_config.enabled() and vim.g.cmp_toggle_flag
+end
+
 return M

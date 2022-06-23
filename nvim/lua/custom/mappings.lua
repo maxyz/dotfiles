@@ -1,5 +1,16 @@
 local M = {}
 
+M.cmp = {
+  n = {
+    ["<leader>tc"] = {
+      function()
+        vim.g.cmp_toggle_flag = not vim.g.cmp_toggle_flag
+      end,
+      "Toggle completion"
+    }
+  }
+}
+
 M.gundo =  {
   n = {
     ["<F6>"] = { "<cmd> GundoToggle <CR>", "Toggle undo tree" },
