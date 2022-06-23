@@ -44,7 +44,6 @@ M.magmanvim = {
 
 M._local = {
   n = {
-    ["<leader>q"] = { "<cmd> bd <CR>", "Close current buffer" },
     ["Q"] = { "gq", "Format paragraph" },
   },
   x = {
