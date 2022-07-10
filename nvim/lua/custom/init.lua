@@ -22,3 +22,5 @@ vim.opt.wildmode = "list:longest"
 
 -- Avoid showing the hiding the text with the output
 vim.g.magma_automatically_open_output = false
+
+vim.opt.guifont = "SauceCodePro Nerd Font Mono:h12"
