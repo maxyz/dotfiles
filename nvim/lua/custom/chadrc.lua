@@ -13,13 +13,11 @@ M.plugins = {
     [ "kyazdani42/nvim-tree.lua" ] = function()
       return require("custom.configs.nvim_tree")
     end,
+    [ "williamboman/mason.nvim" ] = function()
+      return require("custom.configs.mason")
+    end,
   },
   user = userPlugins,
-  options = {
-    lspconfig = {
-      setup_lspconf = "custom.configs.lspconfig",
-    },
-  },
 }
 
 M.ui = {

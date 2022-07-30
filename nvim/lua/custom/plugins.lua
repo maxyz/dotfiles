@@ -2,10 +2,16 @@
 
 return {
   -- lsp stuff
+  ["neovim/nvim-lspconfig"] = {
+    config = function()
+      require("plugins.configs.lspconfig")
+      require("custom.configs.lspconfig")
+    end,
+  },
   [ "jose-elias-alvarez/null-ls.nvim" ] = {
     after = "nvim-lspconfig",
     config = function()
-      require("custom.configs.null_ls").setup()
+      require("custom.configs.null_ls")
     end,
   },
   -- some addictive plugins
