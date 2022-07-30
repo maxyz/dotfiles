@@ -26,11 +26,7 @@ return {
   [ "lambdalisue/suda.vim" ] = {},
   -- ui
   [ "dstein64/nvim-scrollview" ] = {},
-  [ "sjl/gundo.vim" ] = {
-    setup = function()
-      vim.g.gundo_prefer_python3 = 1
-    end,
-  },
+  [ "simnalamburt/vim-mundo" ] = {},
   -- filetypes
   [ "towolf/vim-helm" ] = {},
   -- nvim tree

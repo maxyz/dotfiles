@@ -76,5 +76,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+-- Do allow the python3 provider to load
+vim.g.loaded_python3_provider = nil
 -- Avoid showing the hiding the text with the output
 vim.g.magma_automatically_open_output = false

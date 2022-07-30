@@ -11,9 +11,9 @@ M.cmp = {
   }
 }
 
-M.gundo =  {
+M.mundo =  {
   n = {
-    ["<F6>"] = { "<cmd> GundoToggle <CR>", "Toggle undo tree" },
+    ["<F6>"] = { "<cmd> MundoToggle <CR>", "Toggle undo tree" },
   }
 }
 
