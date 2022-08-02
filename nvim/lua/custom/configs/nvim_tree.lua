@@ -14,6 +14,9 @@ local M = {
   update_focused_file = {
     update_cwd = true,
   },
+  view = {
+    adaptive_size = false,
+  }
 }
 
 return M
