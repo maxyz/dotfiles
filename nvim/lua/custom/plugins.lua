@@ -29,11 +29,6 @@ return {
   [ "simnalamburt/vim-mundo" ] = {},
   -- filetypes
   [ "towolf/vim-helm" ] = {},
-  -- nvim tree
-  -- add findfile
-  ["kyazdani42/nvim-tree.lua"] = {
-    cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
-  },
   -- jupyter integration
   ["dccsillag/magma-nvim"] = {
     run = ":UpdateRemotePlugins",
@@ -48,5 +43,24 @@ return {
       vim.g.mkdp_browser = '/bin/true'
     end,
     ft = { "markdown" },
+  },
+  -- cmp overrides
+  [ "hrsh7th/nvim-cmp" ] = {
+    override_options = function()
+      return require("custom.configs.cmp")
+    end,
+  },
+  -- nvim tree
+  [ "kyazdani42/nvim-tree.lua" ] = {
+    cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
+    override_options = function()
+      return require("custom.configs.nvim_tree")
+    end,
+  },
+  -- Mason overrides
+  [ "williamboman/mason.nvim" ] = {
+    override_options = function()
+      return require("custom.configs.mason")
+    end,
   },
 }

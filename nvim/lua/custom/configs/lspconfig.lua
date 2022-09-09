@@ -9,6 +9,8 @@ local servers = {
   "html",
   "cssls",
   "eslint",
+  -- javascript and typescript
+  "tsserver",
   -- json
   "jsonls",
   -- Python
