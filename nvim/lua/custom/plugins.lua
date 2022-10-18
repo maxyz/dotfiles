@@ -63,4 +63,10 @@ return {
       return require("custom.configs.mason")
     end,
   },
+  -- Treesitter
+  ["nvim-treesitter/nvim-treesitter"] = {
+    override_options = function()
+      return require("custom.configs.treesitter")
+    end,
+  },
 }
