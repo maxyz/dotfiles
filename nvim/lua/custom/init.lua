@@ -23,9 +23,6 @@ vim.opt.wildmode = "list:longest"
 -- Default font for nvim gui
 vim.opt.guifont = "SauceCodePro Nerd Font Mono:h12"
 
--- Default shiftwidth
-vim.opt.shiftwidth = 4
-
 -- Add extra filetypes
 vim.filetype.add({
     pattern = {
@@ -33,50 +30,8 @@ vim.filetype.add({
     },
 })
 
--- Some filetype specific settings
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "html",
-    callback = function()
-        vim.opt_local.shiftwidth = 2
-    end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "javascript",
-    callback = function()
-        vim.opt_local.shiftwidth = 2
-    end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "lua",
-    callback = function()
-        vim.opt_local.shiftwidth = 2
-    end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "javascriptreact",
-    callback = function()
-        vim.opt_local.shiftwidth = 2
-    end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "typescript",
-    callback = function()
-        vim.opt_local.shiftwidth = 2
-    end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "typescriptreact",
-    callback = function()
-        vim.opt_local.shiftwidth = 2
-    end,
-})
-
 -- Do allow the python3 provider to load
 vim.g.loaded_python3_provider = nil
+
 -- Avoid showing the hiding the text with the output
 vim.g.magma_automatically_open_output = false
