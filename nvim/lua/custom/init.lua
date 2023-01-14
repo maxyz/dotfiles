@@ -25,9 +25,9 @@ vim.opt.guifont = "SauceCodePro Nerd Font Mono:h12"
 
 -- Add extra filetypes
 vim.filetype.add({
-    pattern = {
-        ["[dD]ocker[fF]ile.*"] = "dockerfile",
-    },
+	pattern = {
+		["[dD]ocker[fF]ile.*"] = "dockerfile",
+	},
 })
 
 -- Do allow the python3 provider to load
