@@ -16,7 +16,7 @@ local M = {
   },
   view = {
     adaptive_size = false,
-  }
+  },
 }
 
 return M
