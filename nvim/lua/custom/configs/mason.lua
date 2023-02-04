@@ -12,10 +12,43 @@ M.ensure_installed = {
   "deno",
   "emmet-ls",
   "json-lsp",
+  "prettierd",
 
   -- shell
   "shfmt",
   "shellcheck",
+
+  -- ansible
+  "ansible-language-server",
+
+  -- awk
+  "awk-language-server",
+
+  -- python
+  "black",
+  "flake8",
+  "pyright",
+
+  -- C/C++
+  "clangd",
+
+  -- docker
+  "dockerfile-language-server",
+
+  -- flux (influx)
+  "flux-lsp",
+
+  -- markdown
+  "markdownlint",
+
+  -- rust
+  "rust-analyzer",
+
+  -- toml
+  "taplo",
+
+  -- yaml
+  "yaml-language-server",
 }
 
 return M
