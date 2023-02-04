@@ -9,7 +9,9 @@ local servers = {
   "html",
   "cssls",
   "eslint",
+  "emmet_ls",
   -- javascript and typescript
+  -- "denols",
   "tsserver",
   -- json
   "jsonls",
@@ -19,6 +21,8 @@ local servers = {
   "rust_analyzer",
   -- C and friends
   "clangd",
+  -- toml
+  "taplo",
   -- lua
   -- "sumneko_lua",
   -- Influx
