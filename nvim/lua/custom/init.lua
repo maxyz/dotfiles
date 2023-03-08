@@ -35,3 +35,4 @@ vim.g.loaded_python3_provider = nil
 
 -- Avoid showing the hiding the text with the output
 vim.g.magma_automatically_open_output = false
+vim.g.magma_image_provider = "ueberzug"

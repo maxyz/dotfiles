@@ -19,5 +19,13 @@ M.enabled = function()
   return cmp_config.enabled() and vim.g.cmp_toggle_flag
 end
 M.preselect = cmp.PreselectMode.None
+-- M.sources = {
+--   { name = "copilot" },
+--   { name = "luasnip" },
+--   { name = "nvim_lsp" },
+--   { name = "buffer" },
+--   { name = "nvim_lua" },
+--   { name = "path" },
+-- }
 
 return M
