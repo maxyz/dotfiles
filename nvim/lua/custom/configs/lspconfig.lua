@@ -27,6 +27,9 @@ local servers = {
   -- "sumneko_lua",
   -- Influx
   "flux_lsp",
+  -- terraform
+  "terraformls",
+  "tflint",
 }
 
 for _, lsp in ipairs(servers) do
