@@ -17,12 +17,6 @@ M.mundo = {
   },
 }
 
-M.nvimtree = {
-  n = {
-    ["<leader>e"] = { "<cmd> NvimTreeFindFile <CR>", "   focus nvimtree" },
-  },
-}
-
 M.telescope = {
   n = {
     ["<leader>cc"] = { "<cmd> Telescope <CR>", "open telescope" },
