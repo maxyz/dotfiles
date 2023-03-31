@@ -1,6 +1,6 @@
 local M = {
   options = {},
-  plugins = require "custom.plugins",
+  plugins = "custom.plugins",
   mappings = require "custom.mappings",
 }
 

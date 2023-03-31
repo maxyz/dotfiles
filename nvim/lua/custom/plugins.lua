@@ -2,40 +2,42 @@
 
 return {
   -- lsp stuff
-  ["neovim/nvim-lspconfig"] = {
+  {
+    "neovim/nvim-lspconfig",
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
     end,
   },
-  ["jose-elias-alvarez/null-ls.nvim"] = {
+  {
+    "jose-elias-alvarez/null-ls.nvim",
     after = "nvim-lspconfig",
     config = function()
       require "custom.configs.null_ls"
     end,
   },
   -- some addictive plugins
-  ["tpope/vim-abolish"] = {},
-  ["tpope/vim-repeat"] = {},
-  ["tpope/vim-surround"] = {},
-  ["tpope/vim-unimpaired"] = {},
-  ["farmergreg/vim-lastplace"] = {
+  {"tpope/vim-abolish"},
+  {"tpope/vim-repeat"},
+  {"tpope/vim-surround"},
+  {"tpope/vim-unimpaired"},
+  {"farmergreg/vim-lastplace",
     event = { "BufRead" },
   },
   -- sudo write
-  ["lambdalisue/suda.vim"] = {},
+  {"lambdalisue/suda.vim"},
   -- ui
-  ["dstein64/nvim-scrollview"] = {},
-  ["simnalamburt/vim-mundo"] = {},
+  {"dstein64/nvim-scrollview"},
+  {"simnalamburt/vim-mundo"},
   -- filetypes
-  ["towolf/vim-helm"] = {},
+  {"towolf/vim-helm"},
   -- jupyter integration
-  ["dccsillag/magma-nvim"] = {
+  {"dccsillag/magma-nvim",
     run = ":UpdateRemotePlugins",
     -- cmd = { "MagmaInit", },
   },
   -- markdown preview
-  ["iamcco/markdown-preview.nvim"] = {
+  {"iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
     setup = function()
       vim.g.mkdp_filetypes = { "markdown" }
@@ -45,12 +47,12 @@ return {
     ft = { "markdown" },
   },
   -- cmp overrides
-  ["hrsh7th/nvim-cmp"] = {
-    override_options = function()
+  {"hrsh7th/nvim-cmp",
+    opts = function()
       return require "custom.configs.cmp"
     end,
   },
-  -- ["zbirenbaum/copilot.lua"] = {
+  -- {"zbirenbaum/copilot.lua",
   --   cmd = "Copilot",
   --   event = "InsertEnter",
   --   config = function()
@@ -95,28 +97,28 @@ return {
   --     -- }
   --   end,
   -- },
-  -- ["zbirenbaum/copilot-cmp"] = {
+  -- {"zbirenbaum/copilot-cmp",
   --   after = { "copilot.lua" },
   --   config = function()
   --     require("copilot_cmp").setup()
   --   end,
   -- },
   -- nvim tree
-  ["nvim-tree/nvim-tree.lua"] = {
+  {"nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
-    override_options = function()
+    opts = function()
       return require "custom.configs.nvim_tree"
     end,
   },
   -- Mason overrides
-  ["williamboman/mason.nvim"] = {
-    override_options = function()
+  {"williamboman/mason.nvim",
+    opts = function()
       return require "custom.configs.mason"
     end,
   },
   -- Treesitter
-  ["nvim-treesitter/nvim-treesitter"] = {
-    override_options = function()
+  {"nvim-treesitter/nvim-treesitter",
+    opts = function()
       return require "custom.configs.treesitter"
     end,
   },
