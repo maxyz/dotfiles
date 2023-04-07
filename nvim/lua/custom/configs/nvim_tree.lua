@@ -12,10 +12,7 @@ local M = {
   },
   sort_by = "case_sensitive",
   update_focused_file = {
-    update_cwd = true,
-  },
-  view = {
-    adaptive_size = false,
+    update_root = true,
   },
 }
 
