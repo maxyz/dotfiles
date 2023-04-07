@@ -21,6 +21,7 @@ return {
   { "tpope/vim-repeat", lazy = false },
   { "tpope/vim-surround", lazy = false },
   { "tpope/vim-unimpaired", lazy = false },
+  { "farmergreg/vim-lastplace", lazy = false },
   -- sudo write
   { "lambdalisue/suda.vim", lazy = false },
   -- ui
