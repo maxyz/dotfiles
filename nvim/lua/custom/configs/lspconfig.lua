@@ -17,6 +17,7 @@ local servers = {
   "jsonls",
   -- Python
   "pyright",
+  "ruff_lsp",
   -- Rust
   "rust_analyzer",
   -- C and friends

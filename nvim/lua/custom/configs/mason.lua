@@ -10,6 +10,7 @@ M.ensure_installed = {
   "html-lsp",
   "typescript-language-server",
   "deno",
+  "eslint-lsp",
   "emmet-ls",
   "json-lsp",
   "prettierd",
@@ -28,6 +29,8 @@ M.ensure_installed = {
   "black",
   "flake8",
   "pyright",
+  "ruff",
+  "ruff-lsp",
 
   -- C/C++
   "clangd",

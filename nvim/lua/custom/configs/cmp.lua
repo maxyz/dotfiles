@@ -14,7 +14,9 @@ if not present then
 end
 
 local cmp_config = cmp_defaults()
-
+M.completion = {
+  completeopt = "menu,menuone,noselect",
+}
 M.enabled = function()
   return cmp_config.enabled() and vim.g.cmp_toggle_flag
 end
