@@ -12,16 +12,14 @@ local sources = {
   b.formatting.prettierd.with {
     extra_filetypes = { "javascript.jsx", "typescript.tsx" },
   },
-
-  -- python
-  b.formatting.black,
-
+  -- C
+  b.formatting.clang_format,
   -- Lua
   b.formatting.stylua,
-
+  -- python
+  b.formatting.black,
   -- Rust
   b.formatting.rustfmt,
-
   -- Shell
   b.formatting.shfmt,
   b.diagnostics.shellcheck.with { diagnostics_format = "#{m} [#{c}]" },

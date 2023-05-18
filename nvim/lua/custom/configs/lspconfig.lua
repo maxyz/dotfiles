@@ -27,7 +27,7 @@ local servers = {
   -- lua
   -- "sumneko_lua",
   -- Influx
-  "flux_lsp",
+  -- "flux_lsp",
   -- terraform
   "terraformls",
   "tflint",

@@ -39,7 +39,7 @@ M.ensure_installed = {
   "dockerfile-language-server",
 
   -- flux (influx)
-  "flux-lsp",
+  -- "flux-lsp",
 
   -- markdown
   "markdownlint",
