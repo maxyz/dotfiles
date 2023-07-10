@@ -21,6 +21,12 @@ M.enabled = function()
   return cmp_config.enabled() and vim.g.cmp_toggle_flag
 end
 M.preselect = cmp.PreselectMode.None
+M.mapping = {
+  ["<CR>"] = cmp.mapping.confirm {
+    behavior = cmp.ConfirmBehavior.Insert,
+    select = false,
+  },
+}
 -- M.sources = {
 --   { name = "copilot" },
 --   { name = "luasnip" },
