@@ -25,16 +25,17 @@ return {
   -- sudo write
   { "lambdalisue/suda.vim", lazy = false },
   -- ui
-  { "dstein64/nvim-scrollview", lazy = false },
+  -- { "dstein64/nvim-scrollview", lazy = false },
   { "simnalamburt/vim-mundo", cmd = { "MundoToggle" } },
   -- filetypes
   { "towolf/vim-helm", lazy = false },
   -- jupyter integration
-  {
-    "dccsillag/magma-nvim",
-    run = ":UpdateRemotePlugins",
-    -- cmd = { "MagmaInit", },
-  },
+  -- {
+  --   "dccsillag/magma-nvim",
+  --   build = ":UpdateRemotePlugins",
+  --   -- cmd = { "MagmaInit" },
+  --   -- lazy = false,
+  -- },
   -- markdown preview
   {
     "iamcco/markdown-preview.nvim",
