@@ -40,6 +40,9 @@ M.ensure_installed = {
 
   -- flux (influx)
   -- "flux-lsp",
+  -- haskell
+  "haskell-language-server",
+  "fourmolu",
 
   -- markdown
   "markdownlint",

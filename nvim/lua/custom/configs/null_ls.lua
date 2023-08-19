@@ -14,13 +14,15 @@ local sources = {
   },
   -- C
   b.formatting.clang_format,
-  -- Lua
+  -- lua
   b.formatting.stylua,
   -- python
   b.formatting.black,
-  -- Rust
+  -- haskell
+  b.formatting.fourmolu,
+  -- rust
   b.formatting.rustfmt,
-  -- Shell
+  -- shell
   b.formatting.shfmt,
   b.diagnostics.shellcheck.with { diagnostics_format = "#{m} [#{c}]" },
 }

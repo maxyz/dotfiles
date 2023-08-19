@@ -24,6 +24,8 @@ return {
   { "farmergreg/vim-lastplace", lazy = false },
   -- sudo write
   { "lambdalisue/suda.vim", lazy = false },
+  -- git integration
+  { "tpope/vim-fugitive", cmd = "Git" },
   -- ui
   -- { "dstein64/nvim-scrollview", lazy = false },
   { "simnalamburt/vim-mundo", cmd = { "MundoToggle" } },

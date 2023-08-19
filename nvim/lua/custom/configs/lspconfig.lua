@@ -18,6 +18,8 @@ local servers = {
   -- Python
   "pyright",
   "ruff_lsp",
+  -- Haskell
+  "hls",
   -- Rust
   "rust_analyzer",
   -- C and friends
