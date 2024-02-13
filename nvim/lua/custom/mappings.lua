@@ -39,6 +39,12 @@ M.telescope = {
 M._local = {
   n = {
     ["Q"] = { "gq", "Format paragraph" },
+    ["<leader>fl"] = {
+      function()
+        vim.diagnostic.open_float { border = "rounded" }
+      end,
+      "Floating diagnostic",
+    },
   },
   x = {
     ["Q"] = { "gq", "Format selection" },
