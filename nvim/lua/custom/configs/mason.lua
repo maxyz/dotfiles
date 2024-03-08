@@ -34,6 +34,7 @@ M.ensure_installed = {
 
   -- C/C++
   "clangd",
+  "clang-format",
 
   -- docker
   "dockerfile-language-server",

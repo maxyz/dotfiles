@@ -2,10 +2,19 @@
 
 return {
   -- lsp stuff
+  -- {
+  --   "jose-elias-alvarez/null-ls.nvim",
+  --   config = function()
+  --     require "custom.configs.null_ls"
+  --   end,
+  -- },
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "stevearc/conform.nvim",
+    --  for users those who want auto-save conform + lazyloading!
+    -- event = "BufWritePre",
+    -- lazy = false,
     config = function()
-      require "custom.configs.null_ls"
+      require "custom.configs.conform"
     end,
   },
   {
@@ -14,7 +23,7 @@ return {
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
     end,
-    dependencies = { "jose-elias-alvarez/null-ls.nvim" },
+    -- dependencies = { "jose-elias-alvarez/null-ls.nvim" },
   },
   -- some addictive plugins
   { "tpope/vim-abolish", lazy = false },
@@ -124,28 +133,16 @@ return {
   -- nvim tree overrides
   {
     "nvim-tree/nvim-tree.lua",
-    opts = function()
-      local defaults = require "plugins.configs.nvimtree"
-      local custom = require "custom.configs.nvim_tree"
-      return vim.tbl_deep_extend("force", defaults, custom)
-    end,
+    opts = require "custom.configs.nvimtree",
   },
   -- Mason overrides
   {
     "williamboman/mason.nvim",
-    opts = function()
-      local defaults = require "plugins.configs.mason"
-      local custom = require "custom.configs.mason"
-      return vim.tbl_deep_extend("force", defaults, custom)
-    end,
+    opts = require "custom.configs.mason",
   },
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = function()
-      local defaults = require "plugins.configs.treesitter"
-      local custom = require "custom.configs.treesitter"
-      return vim.tbl_deep_extend("force", defaults, custom)
-    end,
+    opts = require "custom.configs.treesitter",
   },
 }

@@ -1,5 +1,16 @@
 local M = {}
 
+M.general = {
+  -- n = {
+  --   ["<leader>fm"] = {
+  --     function()
+  --       require("conform").format()
+  --     end,
+  --     "formatting",
+  --   },
+  -- },
+}
+
 M.cmp = {
   n = {
     ["<leader>tc"] = {
@@ -45,6 +56,12 @@ M._local = {
       end,
       "Floating diagnostic",
     },
+    -- ["<leader>fm"] = {
+    --   function()
+    --     require("conform").format()
+    --   end,
+    --   "formatting",
+    -- },
   },
   x = {
     ["Q"] = { "gq", "Format selection" },

@@ -14,6 +14,14 @@ local M = {
   update_focused_file = {
     update_root = true,
   },
+  renderer = {
+    -- highlight_git = true,
+    icons = {
+      show = {
+        git = true,
+      },
+    },
+  },
 }
 
 return M
