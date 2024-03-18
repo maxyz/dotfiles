@@ -1,7 +1,10 @@
+---@diagnostic disable: different-requires
 local lspconfig = require "lspconfig"
+local configs = require "nvchad.configs.lspconfig"
 
-local on_attach = require("plugins.configs.lspconfig").on_attach
-local capabilities = require("plugins.configs.lspconfig").capabilities
+local capabilities = configs.capabilities
+local on_attach = configs.on_attach
+local on_init = configs.on_init
 
 -- lspservers with default config
 local servers = {
@@ -47,6 +50,7 @@ end
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
+    on_init = on_init,
     on_attach = custom_on_attach,
     capabilities = capabilities,
   }

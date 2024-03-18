@@ -1,3 +1,4 @@
+---@diagnostic disable: different-requires
 -- Some additional plugins
 
 return {
@@ -11,7 +12,7 @@ return {
   {
     "stevearc/conform.nvim",
     --  for users those who want auto-save conform + lazyloading!
-    -- event = "BufWritePre",
+    event = "BufWritePre",
     -- lazy = false,
     config = function()
       require "custom.configs.conform"
@@ -73,11 +74,30 @@ return {
   -- cmp overrides
   {
     "hrsh7th/nvim-cmp",
-    opts = function()
-      local defaults = require "plugins.configs.cmp"
-      local custom = require "custom.configs.cmp"
-      return vim.tbl_deep_extend("force", defaults, custom)
-    end,
+    opts = require "custom.configs.cmp",
+    dependencies = {
+      {
+        -- snippet plugin
+        "L3MON4D3/LuaSnip",
+        config = function(_, opts)
+          -- load default luasnip config
+          require("plugins.configs.others").luasnip(opts)
+
+          local luasnip = require "luasnip"
+          luasnip.filetype_extend("javascriptreact", { "html" })
+          luasnip.filetype_extend("typescriptreact", { "html" })
+          require("luasnip/loaders/from_vscode").lazy_load()
+        end,
+      },
+
+      -- ai based completion
+      {
+        "Exafunction/codeium.nvim",
+        config = function()
+          require("codeium").setup {}
+        end,
+      },
+    },
   },
   -- {"zbirenbaum/copilot.lua",
   --   cmd = "Copilot",
@@ -130,6 +150,22 @@ return {
   --     require("copilot_cmp").setup()
   --   end,
   -- },
+  -- Codium
+  {
+    "Exafunction/codeium.vim",
+    event = "BufEnter",
+  },
+  -- Cody plugin
+  -- {
+  --   "sourcegraph/sg.nvim",
+  --   event = "BufEnter",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   config = function()
+  --     require("sg").setup()
+  --   end,
+  -- },
+  -- ollama using gen.nvim
+  -- { "David-Kunz/gen.nvim", opts = { model = "codellama" }, cmd = "Gen" },
   -- nvim tree overrides
   {
     "nvim-tree/nvim-tree.lua",
@@ -144,5 +180,37 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = require "custom.configs.treesitter",
+  },
+  -- pretty diagnostics panel
+  {
+    "folke/trouble.nvim",
+    cmd = "Trouble",
+    config = function()
+      require("trouble").setup()
+    end,
+  },
+  -- distraction free mode
+  {
+    "folke/zen-mode.nvim",
+    cmd = "ZenMode",
+    config = function()
+      require "custom.configs.zenmode"
+    end,
+  },
+  -- Go directly to a line
+  {
+    "bogado/file-line",
+    lazy = false,
+  },
+  -- Refactoring
+  {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("refactoring").setup()
+    end,
   },
 }

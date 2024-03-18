@@ -44,3 +44,8 @@ vim.g.loaded_python3_provider = nil
 -- Avoid showing the hiding the text with the output
 vim.g.magma_automatically_open_output = false
 vim.g.magma_image_provider = "ueberzug"
+
+-- codeium in manual mode
+vim.g.codeium_manual = true
+-- Disable tab in codeium
+vim.g.codeium_no_map_tab = false

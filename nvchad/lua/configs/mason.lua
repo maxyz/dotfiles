@@ -11,9 +11,10 @@ M.ensure_installed = {
   "typescript-language-server",
   "deno",
   "eslint-lsp",
-  "emmet-ls",
+  "emmet-language-server",
   "json-lsp",
   "prettierd",
+  "biome",
 
   -- shell
   "shfmt",
@@ -57,6 +58,7 @@ M.ensure_installed = {
 
   -- yaml
   "yaml-language-server",
+  "yamlfmt",
 }
 
 return M

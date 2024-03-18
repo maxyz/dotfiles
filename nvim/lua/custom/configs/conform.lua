@@ -5,18 +5,15 @@ local options = {
   formatters_by_ft = {
     lua = { "stylua" },
 
-    javascript = { "deno_fmt", "prettierd" },
-    javascriptreact = { "deno_fmt", "prettierd" },
-    typescript = { "deno_fmt", "prettierd" },
-    typescriptreact = { "deno_fmt", "prettierd" },
-    markdown = { "deno_fmt", "prettierd" },
-
+    javascript = { "prettierd" },
+    javascriptreact = { "prettierd" },
+    typescript = { "prettierd" },
+    typescriptreact = { "prettierd" },
+    markdown = { "prettierd" },
     css = { "prettierd" },
     html = { "prettierd" },
 
     haskell = { "fourmolu" },
-
-    -- python = { "ruff_format" },
 
     rust = { "rustfmt" },
 
