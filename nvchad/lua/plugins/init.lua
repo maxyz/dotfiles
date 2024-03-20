@@ -185,6 +185,11 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = require "configs.treesitter",
+    dependencies = {
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+      },
+    },
   },
   -- pretty diagnostics panel
   {
