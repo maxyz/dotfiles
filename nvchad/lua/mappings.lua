@@ -21,6 +21,7 @@ map("n", "<F6>", "<cmd> UndotreeToggle <CR>", { desc = "Toggle undo tree" })
 
 -- telescope
 map("n", "<leader>cc", "<cmd> Telescope <CR>", { desc = "open telescope" })
+map("n", "<leader>sk", "<cmd> Telescope keymaps<CR>", { desc = "telescope keymaps" })
 
 -- refactoring
 map("n", "<leader>ri", function()
