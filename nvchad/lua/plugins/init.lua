@@ -1,5 +1,3 @@
--- Some additional plugins
-
 return {
   -- lsp stuff
   -- {
@@ -226,10 +224,12 @@ return {
   -- Telescope
   {
     "nvim-telescope/telescope.nvim",
-    opts = { extensions_list = { "fzf", "glyph" , 'terms'} },
+    opts = { extensions_list = { "fzf", "glyph", "terms" } },
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       { "ghassan0/telescope-glyph.nvim" },
     },
   },
+  -- disable
+  { "windwp/nvim-autopairs", enabled = false },
 }
