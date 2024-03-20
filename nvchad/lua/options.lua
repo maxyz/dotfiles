@@ -35,14 +35,6 @@ vim.filetype.add {
   },
 }
 
--- FileType specific configurations
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "python",
-  callback = function()
-    vim.opt_local.textwidth = 88
-  end,
-})
-
 -- Do allow the python3 provider to load
 vim.g.loaded_python3_provider = nil
 
