@@ -16,12 +16,10 @@ local M = {
     ignore = false,
   },
 
-  -- hijack_directories = {
-  --   enable = true,
-  -- },
   update_focused_file = {
     update_root = true,
   },
+
   sync_root_with_cwd = false,
 
   sort = { sorter = "case_sensitive" },
