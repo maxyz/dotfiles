@@ -30,7 +30,7 @@ M.ensure_installed = {
   -- python
   -- "black",
   -- "flake8",
-  "pyright",
+  "basedpyright",
   "ruff",
   "ruff-lsp",
 
