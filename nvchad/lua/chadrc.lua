@@ -2,8 +2,8 @@ local M = {}
 
 -- Path to overriding theme and highlights files
 M.ui = {
-  theme = "pastelbeans",
-  theme_toggle = { "pastelbeans", "one_light" },
+  theme = "mountain",
+  theme_toggle = { "mountain", "one_light" },
 
   hl_override = {
     Comment = { fg = "orange" },
