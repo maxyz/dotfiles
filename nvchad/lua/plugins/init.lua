@@ -172,6 +172,7 @@ return {
   -- nvim tree overrides
   {
     "nvim-tree/nvim-tree.lua",
+    event = "BufEnter",
     opts = require "configs.nvimtree",
   },
   -- Mason overrides

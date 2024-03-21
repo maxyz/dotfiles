@@ -7,21 +7,24 @@ local M = {
     },
   },
 
-  -- filters = {
-  --   dotfiles = true,
-  --   custom = { "node_modules" },
-  -- },
+  filters = {
+    git_ignored = false,
+  },
 
   git = {
     enable = true,
     ignore = false,
   },
 
-  sort_by = "case_sensitive",
-
+  -- hijack_directories = {
+  --   enable = true,
+  -- },
   update_focused_file = {
     update_root = true,
   },
+  sync_root_with_cwd = false,
+
+  sort = { sorter = "case_sensitive" },
 
   renderer = {
     -- highlight_git = true,
@@ -31,9 +34,11 @@ local M = {
       },
     },
   },
-
   view = {
-    adaptive_size = true,
+    width = {
+      min = 10,
+      max = 30,
+    },
   },
 }
 

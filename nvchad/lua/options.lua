@@ -46,5 +46,3 @@ vim.g.magma_image_provider = "ueberzug"
 vim.g.codeium_manual = true
 -- Disable tab in codeium
 vim.g.codeium_no_map_tab = false
--- Hide cmd line while not being used
-opt.cmdheight = 0
