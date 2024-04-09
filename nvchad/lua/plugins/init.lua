@@ -169,6 +169,58 @@ return {
   -- },
   -- ollama using gen.nvim
   -- { "David-Kunz/gen.nvim", opts = { model = "codellama" }, cmd = "Gen" },
+  {
+    "nomnivore/ollama.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+
+    -- All the user commands added by the plugin
+    cmd = { "Ollama", "OllamaModel", "OllamaServe", "OllamaServeStop" },
+
+    keys = {
+      -- Sample keybind for prompt menu. Note that the <c-u> is important for selections to work properly.
+      {
+        "<leader>oo",
+        ":<c-u>lua require('ollama').prompt()<cr>",
+        desc = "ollama prompt",
+        mode = { "n", "v" },
+      },
+
+      -- Sample keybind for direct prompting. Note that the <c-u> is important for selections to work properly.
+      {
+        "<leader>oG",
+        ":<c-u>lua require('ollama').prompt('Generate_Code')<cr>",
+        desc = "ollama Generate Code",
+        mode = { "n", "v" },
+      },
+    },
+
+    ---@type Ollama.Config
+    opts = {
+      -- your configuration overrides
+      model = "dolphin-mistral",
+      prompts = {
+        Add_Tests = {
+          prompt = "Implement tests for the following code.\n\nCode:\n```$ftype\n$sel\n```\n\nTests:\n```$type",
+          action = "display",
+        },
+        Add_Pytest_Tests = {
+          prompt = "Implement tests for the following code using pytest.\n\nCode:\n```$ftype\n$sel\n```\n\nTests:\n```$ftype",
+          action = "display",
+          model = "mixtral:8x7b",
+        },
+        Optimize_Code = {
+          prompt = "Optimize the code below, following these instructions:\n\n$input.\n\nCode:\n```$ftype\n$sel\n```\n\nOptimized version:\n```$ftype",
+          action = "display_replace",
+        },
+        Fix_Bugs = {
+          prompt = "Fix bugs in the below code\n\nCode:\n```$ftype\n$sel\n```\n\nFixed code:\n```$ftype",
+          action = "replace",
+        },
+      },
+    },
+  },
   -- nvim tree overrides
   {
     "nvim-tree/nvim-tree.lua",
