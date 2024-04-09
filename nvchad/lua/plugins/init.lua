@@ -94,12 +94,12 @@ return {
       },
 
       -- ai based completion
-      {
-        "Exafunction/codeium.nvim",
-        config = function()
-          require("codeium").setup {}
-        end,
-      },
+      -- {
+      --   "Exafunction/codeium.nvim",
+      --   config = function()
+      --     require("codeium").setup {}
+      --   end,
+      -- },
     },
   },
   -- {"zbirenbaum/copilot.lua",
@@ -154,10 +154,10 @@ return {
   --   end,
   -- },
   -- Codium
-  {
-    "Exafunction/codeium.vim",
-    event = "BufEnter",
-  },
+  -- {
+  --   "Exafunction/codeium.vim",
+  --   event = "BufEnter",
+  -- },
   -- Cody plugin
   -- {
   --   "sourcegraph/sg.nvim",

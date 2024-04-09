@@ -16,6 +16,7 @@ local servers = {
   -- javascript and typescript
   -- "denols",
   "tsserver",
+  "biome",
   -- Python
   "pyright",
   "ruff_lsp",
