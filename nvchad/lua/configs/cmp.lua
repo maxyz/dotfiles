@@ -2,7 +2,7 @@
 local cmp = require "cmp"
 local cmp_defaults = require "cmp.config.default"
 
-vim.g.cmp_toggle_flag = true
+vim.g.cmp_toggle_flag = false
 
 local M = {}
 

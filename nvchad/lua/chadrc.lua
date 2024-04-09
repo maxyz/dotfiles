@@ -4,6 +4,7 @@ local M = {}
 M.ui = {
   theme = "mountain",
   theme_toggle = { "mountain", "one_light" },
+  transparency = true,
 
   hl_override = {
     Comment = { fg = "orange" },
@@ -11,7 +12,10 @@ M.ui = {
     NvimTreeOpenedFolderName = { fg = "green" },
   },
 
-  hl_add = {
+  hl_add = {},
+
+  statusline = {
+    theme = "minimal",
   },
 }
 
