@@ -50,18 +50,18 @@ return {
   --   -- lazy = false,
   -- },
   -- markdown preview
-  {
-    "iamcco/markdown-preview.nvim",
-    config = function()
-      vim.fn["mkdp#util#install"]()
-      vim.g.mkdp_echo_preview_url = 1
-      vim.g.mkdp_browser = "/bin/true"
-    end,
-    -- setup = function()
-    --   --   vim.g.mkdp_filetypes = { "markdown" }
-    -- end,
-    ft = { "markdown" },
-  },
+  -- {
+  --   "iamcco/markdown-preview.nvim",
+  --   config = function()
+  --     vim.fn["mkdp#util#install"]()
+  --     vim.g.mkdp_echo_preview_url = 1
+  --     vim.g.mkdp_browser = "/bin/true"
+  --   end,
+  --   -- setup = function()
+  --   --   --   vim.g.mkdp_filetypes = { "markdown" }
+  --   -- end,
+  --   ft = { "markdown" },
+  -- },
   -- {
   --   'toppair/peek.nvim',
   --   build = "deno task --quiet build:fast",

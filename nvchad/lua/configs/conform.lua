@@ -1,8 +1,6 @@
 ---@diagnostic disable: different-requires
 --type conform.options
 local options = {
-  lsp_fallback = true,
-
   formatters_by_ft = {
     lua = { "stylua" },
 
