@@ -27,7 +27,6 @@ M.sources = {
   { name = "buffer" },
   { name = "nvim_lua" },
   { name = "path" },
-  { name = "codeium" },
 }
 M.experimental = {
   ghost_text = true,
