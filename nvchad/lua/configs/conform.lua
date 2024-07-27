@@ -2,18 +2,15 @@
 --type conform.options
 local options = {
   formatters_by_ft = {
-    lua = { "stylua" },
-
+    python = { "ruff_format" },
     -- webdev
-    javascript = { "biome", "prettierd" },
-    javascriptreact = { "biome", "prettierd" },
-    typescript = { "biome", "prettierd" },
-    typescriptreact = { "biome", "prettierd" },
+    javascript = { "prettierd" },
+    javascriptreact = { "prettierd" },
+    typescript = { "prettierd" },
+    typescriptreact = { "prettierd" },
 
-    css = { "biome", "prettierd" },
-    html = { "biome", "prettierd" },
-    json = { "biome" },
-    jsonc = { "biome" },
+    css = { "prettierd" },
+    html = { "prettierd" },
 
     markdown = { "prettierd" },
 
@@ -29,7 +26,7 @@ local options = {
 
   format_on_save = {
     -- These options will be passed to conform.format()
-    timeout_ms = 500,
+    timeout_ms = 2500,
     lsp_fallback = true,
   },
 }

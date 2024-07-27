@@ -24,15 +24,15 @@ return {
     -- dependencies = { "jose-elias-alvarez/null-ls.nvim" },
   },
   -- some addictive plugins
-  { "tpope/vim-abolish", lazy = false },
-  { "tpope/vim-repeat", lazy = false },
-  { "tpope/vim-surround", lazy = false },
-  { "tpope/vim-unimpaired", lazy = false },
+  { "tpope/vim-abolish",        lazy = false },
+  { "tpope/vim-repeat",         lazy = false },
+  { "tpope/vim-surround",       lazy = false },
+  { "tpope/vim-unimpaired",     lazy = false },
   { "farmergreg/vim-lastplace", lazy = false },
   -- sudo write
-  { "lambdalisue/suda.vim", lazy = false },
+  { "lambdalisue/suda.vim",     lazy = false },
   -- git integration
-  { "tpope/vim-fugitive", cmd = "Git" },
+  { "tpope/vim-fugitive",       cmd = "Git" },
   -- ui
   -- { "dstein64/nvim-scrollview", lazy = false },
   -- { "simnalamburt/vim-mundo", cmd = { "MundoToggle" } },
@@ -41,7 +41,7 @@ return {
     cmd = { "UndotreeToggle" },
   },
   -- filetypes
-  { "towolf/vim-helm", lazy = false },
+  { "towolf/vim-helm",       lazy = false },
   -- jupyter integration
   -- {
   --   "dccsillag/magma-nvim",
@@ -73,6 +73,7 @@ return {
   --   ft = { "markdown" },
   -- }
   -- cmp overrides
+  -- { "hrsh7th/nvim-cmp", enabled = false },
   {
     "hrsh7th/nvim-cmp",
     opts = require "configs.cmp",
@@ -206,12 +207,14 @@ return {
           action = "display",
         },
         Add_Pytest_Tests = {
-          prompt = "Implement tests for the following code using pytest.\n\nCode:\n```$ftype\n$sel\n```\n\nTests:\n```$ftype",
+          prompt =
+          "Implement tests for the following code using pytest.\n\nCode:\n```$ftype\n$sel\n```\n\nTests:\n```$ftype",
           action = "display",
           model = "mixtral:8x7b",
         },
         Optimize_Code = {
-          prompt = "Optimize the code below, following these instructions:\n\n$input.\n\nCode:\n```$ftype\n$sel\n```\n\nOptimized version:\n```$ftype",
+          prompt =
+          "Optimize the code below, following these instructions:\n\n$input.\n\nCode:\n```$ftype\n$sel\n```\n\nOptimized version:\n```$ftype",
           action = "display_replace",
         },
         Fix_Bugs = {

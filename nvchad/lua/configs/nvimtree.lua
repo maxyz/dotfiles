@@ -28,7 +28,7 @@ local M = {
     -- highlight_git = true,
     icons = {
       show = {
-        git = true,
+        folder = false,
       },
     },
   },

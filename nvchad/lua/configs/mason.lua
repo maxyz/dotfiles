@@ -48,7 +48,7 @@ M.ensure_installed = {
   "fourmolu",
 
   -- markdown
-  "marksman",
+  "marksman", -- too slow?
 
   -- rust
   "rust-analyzer",
