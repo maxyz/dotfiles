@@ -20,6 +20,8 @@ local servers = {
   -- Python
   pyright = {},
   ruff_lsp = {},
+  -- Gleam
+  gleam = {},
   -- Haskell
   hls = {},
   -- Rust
