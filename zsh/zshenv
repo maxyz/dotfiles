@@ -5,6 +5,6 @@ export ZDOTDIR=~/.config/zsh
 typeset -U PATH path
 path=( ~/bin ~/.local/bin $path )
 
-if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprofile"
+if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR}/zprofile" ]]; then
+  source "${ZDOTDIR}/zprofile"
 fi

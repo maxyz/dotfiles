@@ -1,8 +1,8 @@
 # Recompile configuration if needed:
 autoload -Uz zrecompile
-zrecompile -q -p -R ${ZDOTDIR}/.zshrc -- \
-    -R ${ZDOTDIR}/.zpreztorc -- \
-    -M ${ZDOTDIR}/.zcompdump
+zrecompile -q -p -R ${ZDOTDIR}/zshrc -- \
+    -R ${ZDOTDIR}/zpreztorc -- \
+    -M ${ZDOTDIR}/zcompdump
     # -R ${ZDOTDIR}/.p10k.ascii.zsh -- \
     # -R ${ZDOTDIR}/.p10k.full.zsh -- \
 
@@ -20,11 +20,11 @@ fi
 # [[ $TERM == linux* ]] && [[ -f ${ZDOTDIR}/.p10k.ascii.zsh ]] && source ${ZDOTDIR}/.p10k.ascii.zsh || true
 # [[ $TERM != linux* ]] && [[ -f ${ZDOTDIR}/.p10k.full.zsh ]] && source ${ZDOTDIR}/.p10k.full.zsh || true
 
-if [[ ! -d "$ZDOTDIR/.zprezto" ]]; then
-    git clone --recursive https://github.com/sorin-ionescu/prezto.git "$ZDOTDIR/.zprezto"
+if [[ ! -d "$ZDOTDIR/zprezto" ]]; then
+    git clone --recursive https://github.com/sorin-ionescu/prezto.git "$ZDOTDIR/zprezto"
 fi
 
-source "$ZDOTDIR/.zprezto/init.zsh"
+source "$ZDOTDIR/zprezto/init.zsh"
 # Force prompt in linux terminal
 [[ $TERM == linux* ]] && prompt "powerlevel10k"
 
@@ -108,6 +108,9 @@ path=( ~/.cargo/bin(/N) $path )
 # Node
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Haskell
+[ -s "$HOME/.ghcup/env" ] && \. "$HOME/.ghcup/env"
 
 # path=( ~/.yarn/bin(/N) $path )
 
