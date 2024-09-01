@@ -36,6 +36,8 @@ local servers = {
       },
     },
   },
+  -- java
+  jdtls = {},
   -- lua
   lua_ls = {
     settings = {
@@ -67,6 +69,12 @@ local servers = {
   marksman = {}, -- too slow?
   -- toml
   taplo = {},
+  -- bash
+  bashls = {},
+  -- sql
+  sqlls = {},
+  -- yaml
+  yamlls = {},
 }
 
 local custom_on_attach = function(client, bufnr)

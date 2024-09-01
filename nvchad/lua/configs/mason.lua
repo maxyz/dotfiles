@@ -26,6 +26,8 @@ M.ensure_installed = {
 
   -- awk
   "awk-language-server",
+  -- java
+  "java-language-server",
 
   -- python
   -- "black",
@@ -50,6 +52,10 @@ M.ensure_installed = {
   -- markdown
   "marksman", -- too slow?
 
+  --purescript
+  "purescript-language-server",
+  "purescript-tidy",
+
   -- rust
   "rust-analyzer",
 
@@ -59,6 +65,11 @@ M.ensure_installed = {
   -- yaml
   "yaml-language-server",
   "yamlfmt",
+
+  -- terraform
+  "hclfmt",
+  "terraform_ls",
+  "tflint",
 }
 
 return M

@@ -50,7 +50,7 @@ map("x", "<leader>ri", function()
 end, { desc = "refactor variable to inline" })
 
 -- trouble
-map("n", "<leader>tt", "<cmd> Trouble <cr>", { desc = "show troubles" })
+-- map("n", "<leader>tt", "<cmd> Trouble <cr>", { desc = "show troubles" })
 map("n", "[R", function()
   return require("trouble").first { skip_groups = true, jump = true }
 end, { desc = "first trouble" })
@@ -80,3 +80,11 @@ map("n", "<leader>fM", function()
 end, { desc = "File Format with conform" })
 -- map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
+
+map("n", "<leader>y", "\"+y", { desc = "Yank to system clipboard" })
+map("x", "<leader>y", "\"+y", { desc = "Yank to system clipboard" })
+map("n", "<leader>p", "\"+p", { desc = "Paste system clipboard" })
+map("x", "<leader>p", "\"+p", { desc = "Paste system clipboard" })
+
+local nomap = vim.keymap.del
+nomap("n", "<leader>pt")

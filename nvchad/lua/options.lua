@@ -1,7 +1,8 @@
 require "nvchad.options"
 
 local opt = vim.opt
-opt.title = true
+-- opt.title = true
+opt.clipboard = ""
 
 -- Spell check
 opt.spelllang = "en_gb"

@@ -19,6 +19,11 @@ local options = {
     rust = { "rustfmt" },
 
     sh = { "shfmt" },
+    java = { "clang-format" },
+
+    -- terraform
+    terraform = { "tofu_fmt" },
+    tf = { "tofu_fmt" },
   },
 
   -- adding same formatter for multiple filetypes can look too much work for some
