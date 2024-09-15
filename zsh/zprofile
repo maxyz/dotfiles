@@ -66,4 +66,3 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 #     done
 #     unset sd_out sd_env
 # fi
-
