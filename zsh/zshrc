@@ -9,9 +9,9 @@ zrecompile -q -p -R ${ZDOTDIR}/zshrc -- \
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # if [[ $TERM != linux* ]] && [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -26,7 +26,8 @@ fi
 
 source "$ZDOTDIR/zprezto/init.zsh"
 # Force prompt in linux terminal
-[[ $TERM == linux* ]] && prompt "powerlevel10k"
+# [[ $TERM == linux* ]] && prompt "powerlevel10k"
+eval "$(starship init zsh)"
 
 # zstyle ':prezto:module:editor:info:keymap:primary' format ' %B%F{green}%%%f%b'
 # zstyle ':prezto:module:editor:info:keymap:alternate' format ' %B%F{yellow}:%f%b'

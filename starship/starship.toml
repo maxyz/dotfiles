@@ -1,0 +1,406 @@
+# version: 1.0.0
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# add_newline = true
+continuation_prompt = "[▸▹ ](dimmed white)"
+
+format = """(\
+$nix_shell\
+$container\
+$directory\
+$vcsh\
+$fossil_branch\
+$fossil_metrics\
+$git_branch\
+$git_commit\
+$git_metrics\
+$git_state\
+$git_status\
+$hg_branch\
+$localip\
+$shlvl\
+$fill\
+$status\
+$cmd_duration\
+$line_break\
+)\
+$shell\
+$direnv\
+$env_var\
+$jobs\
+$sudo\
+$username\
+$hostname\
+$character"""
+
+right_format = """
+$singularity\
+$kubernetes\
+$pijul_channel\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$gleam\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$quarto\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$typst\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$nats\
+$crystal\
+$custom\
+$os\
+$battery\
+$time"""
+
+[fill]
+symbol = ' '
+
+[character]
+format = "$symbol "
+success_symbol = "[>](green)"
+error_symbol = "[x](red)"
+vimcmd_symbol = "[<](green)"
+# success_symbol = "[◎](bold italic bright-yellow)"
+# error_symbol = "[○](italic purple)"
+# vimcmd_symbol = "[■](italic dimmed green)"
+# not supported in zsh
+# vimcmd_replace_one_symbol = "◌"
+# vimcmd_replace_symbol = "□"
+# vimcmd_visual_symbol = "▼"
+vimcmd_replace_one_symbol = "'"
+vimcmd_replace_symbol = "^"
+vimcmd_visual_symbol = "v"
+
+[azure]
+disabled = true
+format = ' [$symbol($subscription)]($style)'
+symbol = "az "
+
+[gcloud]
+disabled = true
+format = ' [$symbol$project]($style)'
+symbol = "gcp "
+project_aliases = {less-backend="ss"}
+
+[aws]
+disabled = true
+# format = " [aws](italic) [$symbol $profile $region]($style)"
+style = "bold blue"
+# symbol = "▲ "
+symbol = "aws "
+format = " [$symbol$profile]($style)"
+
+[directory]
+read_only = " ro"
+truncate_to_repo = false
+truncation_symbol = '.../'
+
+[env_var.VIMSHELL]
+format = "[$env_value]($style)"
+style = 'green'
+
+[sudo]
+format = "[$symbol]($style)"
+style = "bold blue"
+symbol = "as "
+disabled = true
+
+[username]
+style_user = "green"
+style_root = "purple"
+format = "[$user]($style)"
+disabled = false
+show_always = false
+
+[hostname]
+style = "dimmed green"
+format = '[@$hostname ]($style)'
+
+[cmd_duration]
+format = "[ $duration](dimmed white)"
+
+[status]
+format = ' [$common_meaning$signal_name$maybe_int]($style)'
+symbol = "X"
+not_executable_symbol = '!'
+not_found_symbol = '?'
+sigint_symbol = 'K'
+signal_symbol = 'S'
+style = "dimmed red"
+disabled = false
+
+[jobs]
+format = "[$symbol$number]($style) "
+style = "white"
+symbol = "[+](blue)"
+
+[time]
+disabled = false
+format = " [$time]($style)"
+time_format = "%T"
+utc_time_offset = "local"
+style = "dimmed white"
+
+[git_branch]
+format = "[$branch(:$remote_branch)]($style)"
+style = "purple"
+only_attached = true
+
+[git_commit]
+tag_disabled = false
+
+[git_metrics]
+format = '([+$added]($added_style))([-$deleted]($deleted_style))'
+added_style = "green"
+deleted_style = "red"
+ignore_submodules = true
+disabled = false
+
+[git_status]
+format = '([ $all_status$ahead_behind ]($style))'
+ahead = "[>$count](green)"
+behind = "[<$count](green)"
+conflicted = "[~$count](red)"
+deleted = "[x$count](yellow)"
+diverged = "[<>$ahead_count:$behind_count](yellow)"
+modified = '[!$count](yellow)'
+renamed = "[r$count](green)"
+staged = "[+$count](yellow)"
+stashed = "[\\$$count](green)"
+untracked = "[?$count](blue)"
+style = 'dimmed green'
+
+[package]
+disabled = false
+format = " [$symbol$version]($style)"
+version_format = "${raw}"
+symbol = "[pkg](dimmed green)"
+style = "dimmed yellow"
+
+[python]
+format = " [${symbol}${version}]($style)"
+symbol = "[py](green)"
+version_format = "${major}.${minor}"
+style = "yellow"
+
+[nodejs]
+format = " [$symbol$version](yellow)"
+symbol = "[node](purple)"
+version_format = "${major}.${minor}"
+detect_files = ["package-lock.json", "yarn.lock", ".node_version", ".nvmrc"]
+detect_folders = ["node_modules"]
+
+[helm]
+format = " [$symbol$version]($style)"
+symbol = '[helm](white)'
+version_format = "${major}.${minor}"
+style	= 'dimmed white'
+
+[rust]
+format = " [$symbol$version]($style)"
+symbol = "[rs](red)"
+version_format = "${major}.${minor}"
+style = "dimmed red"
+
+[battery]
+format = "[ $percentage$symbol]($style)"
+full_symbol = "T"
+charging_symbol = "^"
+discharging_symbol = "v"
+unknown_symbol = "?"
+empty_symbol = "_"
+style = "green"
+
+[[battery.display]]
+threshold = 20
+style = "bold red"
+
+[[battery.display]]
+threshold = 60
+style = "dimmed bright-purple"
+
+[[battery.display]]
+threshold = 70
+style = "dimmed yellow"
+
+[c]
+symbol = "[C](white)"
+format = " [$symbol$name$version]($style)"
+version_format = "${major}.${minor}"
+style = "dimmed white"
+
+[docker_context]
+symbol = " [docker](blue)"
+format = " [$symbol$context]($style)"
+style = "dimmed blue"
+
+[gleam]
+format = " [$symbol$version]($style)"
+symbol = "[gleam](purple)"
+version_format = "${major}.${minor}"
+style = "dimmed purple"
+
+[golang]
+format = " [$symbol$version]($style)"
+symbol = "[go](blue)"
+version_format = "${major}.${minor}"
+style = "dimmed blue"
+
+[java]
+symbol = "[java](blue)"
+format = " [${symbol}${version}]($style)"
+version_format = "${major}.${minor}"
+style = "dimmed blue"
+
+[gradle]
+symbol = "[gradle](green)"
+format = " [${symbol}${version}]($style)"
+version_format = "${major}.${minor}"
+style = "dimmed green"
+
+[lua]
+symbol = "[lua](white)"
+format = " [${symbol}${version}]($style)"
+version_format = "${major}.${minor}"
+style = "dimmed white"
+
+[nats]
+symbol = "[nats](blue)"
+format = ' [$symbol$name]($style)'
+style = "dimmed green"
+
+[scala]
+symbol = "[scala](red)"
+format = ' [${symbol}${version}]($style)'
+version_format = "${major}.${minor}"
+style = "dimmed red"
+
+# [localip]
+# ssh_only = true
+# format = " ◯[$localipv4](bold magenta)"
+# disabled = false
+#
+# [deno]
+# format = " [deno](italic) [∫ $version](green bold)"
+# version_format = "${raw}"
+#
+# [ruby]
+# format = " [rb](italic) [${symbol}${version}]($style)"
+# symbol = "◆ "
+# version_format = "${raw}"
+# style = "bold red"
+#
+# [swift]
+# format = " [sw](italic) [${symbol}${version}]($style)"
+# symbol = "◁ "
+# style = "bold bright-red"
+# version_format = "${raw}"
+#
+# [azure]
+# disabled = true
+#
+# [gcloud]
+# disabled = true
+#
+# [aws]
+# disabled = true
+# format = " [aws](italic) [$symbol $profile $region]($style)"
+# style = "bold blue"
+# symbol = "▲ "
+#
+# [buf]
+# symbol = "■ "
+# format = " [buf](italic) [$symbol $version $buf_version]($style)"
+#
+# [conda]
+# symbol = "◯ "
+# format = " conda [$symbol$environment]($style)"
+#
+# [dart]
+# symbol = "◁◅ "
+# format = " dart [$symbol($version )]($style)"
+#
+# [elixir]
+# symbol = "△ "
+# format = " exs [$symbol $version OTP $otp_version ]($style)"
+#
+# [elm]
+# symbol = "◩ "
+# format = " elm [$symbol($version )]($style)"
+#
+# [haskell]
+# symbol = "❯λ "
+# format = " hs [$symbol($version )]($style)"
+#
+# [julia]
+# symbol = "◎ "
+# format = " jl [$symbol($version )]($style)"
+#
+# [memory_usage]
+# symbol = "▪▫▪ "
+# format = " mem [${ram}( ${swap})]($style)"
+#
+# [nim]
+# symbol = "▴▲▴ "
+# format = " nim [$symbol($version )]($style)"
+#
+# [nix_shell]
+# style = 'bold italic dimmed blue'
+# symbol = '✶'
+# format = '[$symbol nix⎪$state⎪]($style) [$name](italic dimmed white)'
+# impure_msg = '[⌽](bold dimmed red)'
+# pure_msg = '[⌾](bold dimmed green)'
+# unknown_msg = '[◌](bold dimmed ellow)'
+#
+# [spack]
+# symbol = "◇ "
+# format = " spack [$symbol$environment]($style)"
