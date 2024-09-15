@@ -15,7 +15,7 @@ local servers = {
   emmet_ls = {},
   -- javascript and typescript
   -- "denols",
-  tsserver = {},
+  ts_ls = {},
   biome = {},
   -- Python
   pyright = {},
@@ -58,6 +58,8 @@ local servers = {
       },
     },
   },
+  -- Golang
+  gopls = {},
   -- Influx
   -- "flux_lsp",
   -- terraform
