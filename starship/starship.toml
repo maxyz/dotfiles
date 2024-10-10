@@ -245,13 +245,12 @@ version_format = "${major}.${minor}"
 style = "dimmed red"
 
 [battery]
-format = "[ $percentage$symbol]($style)"
-full_symbol = "T"
-charging_symbol = "^"
-discharging_symbol = "v"
-unknown_symbol = "?"
-empty_symbol = "_"
-style = "green"
+format = ' [$percentage$symbol]($style)'
+full_symbol = 'T'
+charging_symbol = '^'
+discharging_symbol = 'v'
+unknown_symbol = '?'
+empty_symbol = '_'
 
 [[battery.display]]
 threshold = 20
@@ -264,6 +263,10 @@ style = "dimmed bright-purple"
 [[battery.display]]
 threshold = 70
 style = "dimmed yellow"
+
+[[battery.display]]
+threshold = 100
+style = "green"
 
 [c]
 symbol = "[C](white)"
