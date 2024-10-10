@@ -2,26 +2,13 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
--- cmp
-map("n", "<leader>tc", function()
-  vim.g.cmp_toggle_flag = not vim.g.cmp_toggle_flag
-end, { desc = "Toggle completion" })
-
--- codeium
-map("i", "<M-CR>", function()
-  -- "<Plug>call codeium#Accept()<CR>"
-  return vim.api.nvim_input(vim.fn["codeium#Accept"]())
-end, { desc = "Codeium apply" })
-map("n", "<leader>c\\>", function()
-  vim.fn["codeium#Chat"]()
-end, { desc = "Codeium chat" })
-
 -- undo tree
 map("n", "<F6>", "<cmd> UndotreeToggle <CR>", { desc = "Toggle undo tree" })
 
 -- telescope
 map("n", "<leader>cc", "<cmd> Telescope <CR>", { desc = "open telescope" })
-map("n", "<leader>sk", "<cmd> Telescope keymaps<CR>", { desc = "telescope keymaps" })
+map("n", "<leader>fk", "<cmd> Telescope keymaps<CR>", { desc = "telescope keymaps" })
+map("n", "<leater>ft", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
 
 -- refactoring
 map("n", "<leader>ri", function()
@@ -88,3 +75,16 @@ map("x", "<leader>p", "\"+p", { desc = "Paste system clipboard" })
 
 local nomap = vim.keymap.del
 nomap("n", "<leader>pt")
+
+-- Keyboard users
+map("n", "<C-t>", function()
+  require("menu").open("default")
+end, {})
+
+-- mouse users + nvimtree users!
+map("n", "<RightMouse>", function()
+  vim.cmd.exec '"normal! \\<RightMouse>"'
+
+  local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+  require("menu").open(options, { mouse = true })
+end, {})

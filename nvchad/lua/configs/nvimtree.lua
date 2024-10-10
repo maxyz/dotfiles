@@ -25,7 +25,6 @@ local M = {
   sort = { sorter = "case_sensitive" },
 
   renderer = {
-    -- highlight_git = true,
     icons = {
       show = {
         folder = false,

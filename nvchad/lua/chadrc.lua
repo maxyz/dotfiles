@@ -2,6 +2,12 @@ local M = {}
 
 -- Path to overriding theme and highlights files
 M.ui = {
+  statusline = {
+    theme = "minimal",
+  },
+}
+
+M.base46 = {
   theme = "rosepine",
   theme_toggle = { "rosepine", "one_light" },
   -- transparency = true,
@@ -18,11 +24,6 @@ M.ui = {
   },
 
   hl_add = {},
-
-  statusline = {
-    order = { "mode", "file", "git", "%=", "%=", "diagnostics", "lsp", "cwd", "cursor" },
-    theme = "minimal",
-  },
 }
 
 M.mason = {
