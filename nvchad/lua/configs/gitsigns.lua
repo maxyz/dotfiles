@@ -7,12 +7,9 @@ local options = {
     end
 
     local map = vim.keymap.set
-    local nomap = vim.keymap.del
 
     map("n", "<leader>rh", gs.reset_hunk, opts "Reset Hunk")
-    -- map("n", "<leader>ph", gs.preview_hunk, opts "Preview Hunk")
     map("n", "<leader>gb", gs.blame_line, opts "Blame Line")
-    -- nomap("n", "<leader>ph")
   end,
 }
 
