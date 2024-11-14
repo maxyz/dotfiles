@@ -122,7 +122,7 @@ symbol = "az "
 disabled = true
 format = ' [$symbol$project]($style)'
 symbol = "gcp "
-project_aliases = {less-backend="ss"}
+project_aliases = { less-backend = "ss" }
 
 [aws]
 disabled = true
@@ -219,6 +219,12 @@ version_format = "${raw}"
 symbol = "[pkg](dimmed green)"
 style = "dimmed yellow"
 
+[perl]
+format = " [${symbol}${version}]($style)"
+symbol = "[pl](blue)"
+version_format = "${major}.${minor}"
+style = "dimmed blue"
+
 [python]
 format = " [${symbol}${version}]($style)"
 symbol = "[py](green)"
@@ -236,7 +242,7 @@ detect_folders = ["node_modules"]
 format = " [$symbol$version]($style)"
 symbol = '[helm](white)'
 version_format = "${major}.${minor}"
-style	= 'dimmed white'
+style = 'dimmed white'
 
 [rust]
 format = " [$symbol$version]($style)"
