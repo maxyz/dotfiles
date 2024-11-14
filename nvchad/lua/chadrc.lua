@@ -3,6 +3,7 @@ local M = {}
 -- Path to overriding theme and highlights files
 M.ui = {
   statusline = {
+    order = { "mode", "file", "git", "%=", "%=", "diagnostics", "lsp", "cwd", "cursor" },
     theme = "minimal",
   },
 }
@@ -90,7 +91,7 @@ M.mason = {
     "taplo",
 
     -- yaml
-    "yaml-language-server",
+    -- "yaml-language-server",
     "yamlfmt",
 
     -- terraform

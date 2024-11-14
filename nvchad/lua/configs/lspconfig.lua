@@ -19,7 +19,7 @@ local servers = {
   biome = {},
   -- Python
   pyright = {},
-  ruff_lsp = {},
+  ruff = {},
   -- Gleam
   gleam = {},
   -- Haskell
@@ -76,7 +76,7 @@ local servers = {
   -- sql
   sqlls = {},
   -- yaml
-  yamlls = {},
+  -- yamlls = {},
 }
 
 local custom_on_attach = function(client, bufnr)
