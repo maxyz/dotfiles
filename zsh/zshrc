@@ -132,3 +132,5 @@ path=( $path ~/.local/share/coursier/bin(/N) )
 
 # Use direnv to load some specific env overrides
 [[ -x /usr/bin/direnv ]] && eval "$(direnv hook zsh)"
+
+[[ -f "$HOME/.ghcup/env" ]] && source "$HOME/.ghcup/env" # ghcup-env
