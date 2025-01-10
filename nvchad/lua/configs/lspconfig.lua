@@ -22,6 +22,18 @@ local servers = {
   ruff = {},
   -- Gleam
   gleam = {},
+  -- Elixir
+  nextls = {
+    cmd = { "nextls", "--stdio" },
+    init_options = {
+      extensions = {
+        credo = { enable = true }
+      },
+      experimental = {
+        completions = { enable = true }
+      }
+    }
+  },
   -- Haskell
   hls = {},
   -- Rust
