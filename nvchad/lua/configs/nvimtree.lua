@@ -17,10 +17,10 @@ local M = {
   },
 
   update_focused_file = {
-    update_root = true,
+    update_root = false,
   },
 
-  sync_root_with_cwd = false,
+  sync_root_with_cwd = true,
 
   sort = { sorter = "case_sensitive" },
 
