@@ -48,12 +48,12 @@ export LESS='-g -i -M -R -w -X -z-4'
 # Temporary Files
 #
 
-export TMPDIR="/tmp/$LOGNAME"
-if [[ ! -d "$TMPDIR" ]]; then
-    mkdir -p -m 700 "$TMPDIR"
-fi
-
-TMPPREFIX="${TMPDIR%/}/zsh"
+# export TMPDIR="/tmp/$LOGNAME"
+# if [[ ! -d "$TMPDIR" ]]; then
+#     mkdir -p -m 700 "$TMPDIR"
+# fi
+#
+# TMPPREFIX="${TMPDIR%/}/zsh"
 
 # if [[ -d "/run/systemd/seats/" ]] && [[ -x "$(command -v systemctl)" ]]; then
 #     sd_out=$(systemctl --user show-environment)
