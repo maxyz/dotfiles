@@ -1,0 +1,15 @@
+theme = "rose_pine"
+
+[editor]
+auto-completion = false
+auto-info = false
+auto-pairs = false
+
+[editor.lsp]
+display-inlay-hints = true
+
+[editor.indent-guides]
+render = true
+
+[editor.soft-wrap]
+enable = true
