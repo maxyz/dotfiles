@@ -9,8 +9,8 @@ M.ui = {
 }
 
 M.base46 = {
-  theme = "rosepine",
-  theme_toggle = { "rosepine", "one_light" },
+  theme = "tokyodark",
+  theme_toggle = { "tokyodark", "one_light" },
   -- transparency = true,
 
   hl_override = {
