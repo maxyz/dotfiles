@@ -36,7 +36,9 @@ local servers = {
       },
     },
   },
+  -- pyright = {},
   ruff = {},
+  -- mypy = {},
   -- Gleam
   gleam = {},
   -- Elixir
@@ -91,6 +93,8 @@ local servers = {
   gopls = {},
   -- Influx
   -- "flux_lsp",
+  -- perl
+  perlnavigator = {},
   -- terraform
   terraformls = {},
   tflint = {},
