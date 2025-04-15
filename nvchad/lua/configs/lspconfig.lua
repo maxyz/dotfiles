@@ -18,7 +18,24 @@ local servers = {
   ts_ls = {},
   biome = {},
   -- Python
-  pyright = {},
+  basedpyright = {
+    settings = {
+      basedpyright = {
+        analysis = {
+          diagnosticMode = "openFilesOnly",
+          inlayHints = {
+            callArgumentNames = true
+          },
+          diagnosticSeverityOverrides = {
+            reportAny = "hint",
+            reportExplicitAny = "hint",
+            reportUnknownMemberType = "hint",
+            reportUnknownVariableType = "hint",
+          },
+        },
+      },
+    },
+  },
   ruff = {},
   -- Gleam
   gleam = {},
