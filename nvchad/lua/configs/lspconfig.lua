@@ -14,7 +14,7 @@ local servers = {
   eslint = {},
   emmet_ls = {},
   -- javascript and typescript
-  -- "denols",
+  denols = {},
   ts_ls = {},
   biome = {},
   -- Python
@@ -29,6 +29,7 @@ local servers = {
           diagnosticSeverityOverrides = {
             reportAny = "hint",
             reportExplicitAny = "hint",
+            reportImplicitStringConcatenation = "none",
             reportUnknownMemberType = "hint",
             reportUnknownVariableType = "hint",
           },
@@ -93,6 +94,11 @@ local servers = {
   gopls = {},
   -- Influx
   -- "flux_lsp",
+  -- ocaml
+  ocamllsp = {
+    cmd = { "ocamllsp" },
+    filetypes = { "ocaml", "menhir", "ocamlinterface", "ocamllex", "reason", "dune" },
+  },
   -- perl
   perlnavigator = {},
   -- terraform
@@ -108,8 +114,12 @@ local servers = {
   bashls = {},
   -- sql
   sqlls = {},
+  -- helm
+  helm_ls = {},
   -- yaml
   -- yamlls = {},
+  -- Debian packages
+  debputy = {},
 }
 
 local custom_on_attach = function(client, bufnr)
