@@ -40,6 +40,10 @@ return {
   { "towolf/vim-helm",               lazy = false },
   -- use blink by default
   { import = "nvchad.blink.lazyspec" },
+  {
+    "Saghen/blink.cmp",
+    opts = require "configs.blink",
+  },
   -- cmp overrides
   -- {
   --   "hrsh7th/nvim-cmp",
