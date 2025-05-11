@@ -37,13 +37,15 @@ return {
     cmd = { "UndotreeToggle" },
   },
   -- filetypes
-  { "towolf/vim-helm",       lazy = false },
+  { "towolf/vim-helm",               lazy = false },
+  -- use blink by default
+  { import = "nvchad.blink.lazyspec" },
   -- cmp overrides
-  {
-    "hrsh7th/nvim-cmp",
-    opts = require "configs.cmp",
-  },
-  -- -- nvim tree overrides
+  -- {
+  --   "hrsh7th/nvim-cmp",
+  --   opts = require "configs.cmp",
+  -- },
+  -- nvim tree overrides
   {
     "nvim-tree/nvim-tree.lua",
     event = "BufEnter",
@@ -51,7 +53,7 @@ return {
   },
   -- Mason overrides
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = require "configs.mason",
   },
   -- Treesitter
@@ -138,9 +140,10 @@ return {
       { "ghassan0/telescope-glyph.nvim" },
     },
   },
-  -- Menu
-  { "nvchad/volt",           lazy = true },
-  { "nvchad/menu",           lazy = true },
+  {
+    "nvchad/base46",
+    branch = "v3.0",
+  },
   -- disable
   { "windwp/nvim-autopairs", enabled = false },
 }

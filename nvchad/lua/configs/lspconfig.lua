@@ -118,6 +118,8 @@ local servers = {
   helm_ls = {},
   -- yaml
   -- yamlls = {},
+  -- zig
+  zls = {},
   -- Debian packages
   debputy = {},
 }
