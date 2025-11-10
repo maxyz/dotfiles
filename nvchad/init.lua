@@ -21,9 +21,6 @@ require("lazy").setup({
     lazy = false,
     branch = "v2.5",
     import = "nvchad.plugins",
-    config = function()
-      require "options"
-    end,
   },
 
   { import = "plugins" },
@@ -32,8 +29,11 @@ require("lazy").setup({
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
+-- dofile(vim.g.base46_cache .. "markview")
 
-require "nvchad.autocmds"
+require "options"
+require "autocmds"
+-- require "commands"
 
 vim.schedule(function()
   require "mappings"

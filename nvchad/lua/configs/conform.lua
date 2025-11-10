@@ -12,7 +12,7 @@ local options = {
     css = { "prettierd" },
     html = { "prettierd" },
 
-    markdown = { "prettierd" },
+    -- markdown = { "prettierd" },
 
     haskell = { "fourmolu" },
 
@@ -20,6 +20,7 @@ local options = {
 
     sh = { "shfmt" },
     java = { "clang-format" },
+    ocaml = { "ocamlformat" },
 
     -- terraform
     terraform = { "tofu_fmt" },

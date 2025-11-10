@@ -12,7 +12,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end,
   },
@@ -37,13 +36,19 @@ return {
     cmd = { "UndotreeToggle" },
   },
   -- filetypes
-  { "towolf/vim-helm",       lazy = false },
-  -- cmp overrides
+  { "towolf/vim-helm",               lazy = false },
+  -- use blink by default
+  { import = "nvchad.blink.lazyspec" },
   {
-    "hrsh7th/nvim-cmp",
-    opts = require "configs.cmp",
+    "Saghen/blink.cmp",
+    opts = require "configs.blink",
   },
-  -- -- nvim tree overrides
+  -- cmp overrides
+  -- {
+  --   "hrsh7th/nvim-cmp",
+  --   opts = require "configs.cmp",
+  -- },
+  -- nvim tree overrides
   {
     "nvim-tree/nvim-tree.lua",
     event = "BufEnter",
@@ -51,12 +56,13 @@ return {
   },
   -- Mason overrides
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = require "configs.mason",
   },
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
+    -- branch = "main",
     opts = require "configs.treesitter",
     dependencies = {
       {
@@ -138,9 +144,10 @@ return {
       { "ghassan0/telescope-glyph.nvim" },
     },
   },
-  -- Menu
-  { "nvchad/volt",           lazy = true },
-  { "nvchad/menu",           lazy = true },
+  {
+    "nvchad/base46",
+    branch = "v3.0",
+  },
   -- disable
   { "windwp/nvim-autopairs", enabled = false },
 }

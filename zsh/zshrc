@@ -135,7 +135,16 @@ path=( $path ~/.local/share/coursier/bin(/N) )
 # Use direnv to load some specific env overrides
 [[ -x /usr/bin/direnv ]] && eval "$(direnv hook zsh)"
 
-[[ -f "$HOME/.ghcup/env" ]] && source "$HOME/.ghcup/env" # ghcup-env
+# Perl
+export PERLDOC="-M Pod::Text::Color"
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+[[ ! -r "${HOME}/.opam/opam-init/init.zsh" ]] || source "${HOME}/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
+# END opam configuration
 
 # Debian configuration
 alias source_build='gbp buildpackage -S --git-builder="debuild -I -i -us -uc -d"'
