@@ -31,6 +31,7 @@ local servers = {
             reportExplicitAny = "hint",
             reportUnknownMemberType = "hint",
             reportUnknownVariableType = "hint",
+            reportImplicitStringConcatenation = "none",
           },
         },
       },
@@ -38,7 +39,6 @@ local servers = {
   },
   -- pyright = {},
   ruff = {},
-  -- mypy = {},
   -- Gleam
   gleam = {},
   -- Elixir
