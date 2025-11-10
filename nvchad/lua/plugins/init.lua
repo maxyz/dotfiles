@@ -12,7 +12,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end,
   },
@@ -63,6 +62,7 @@ return {
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
+    -- branch = "main",
     opts = require "configs.treesitter",
     dependencies = {
       {

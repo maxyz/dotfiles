@@ -1,6 +1,7 @@
 ---@diagnostic disable: different-requires
 local lspconfig = require "lspconfig"
 local configs = require "nvchad.configs.lspconfig"
+configs.defaults()
 
 local capabilities = configs.capabilities
 local on_attach = configs.on_attach
@@ -14,32 +15,42 @@ local servers = {
   eslint = {},
   emmet_ls = {},
   -- javascript and typescript
-  denols = {},
+  -- denols = {},
   ts_ls = {},
   biome = {},
   -- Python
-  basedpyright = {
+  -- basedpyright = {
+  --   settings = {
+  --     basedpyright = {
+  --       analysis = {
+  --         diagnosticMode = "openFilesOnly",
+  --         inlayHints = {
+  --           callArgumentNames = true
+  --         },
+  --         diagnosticSeverityOverrides = {
+  --           reportAny = "hint",
+  --           reportExplicitAny = "hint",
+  --           reportImplicitStringConcatenation = "none",
+  --           reportUnknownMemberType = "hint",
+  --           reportUnknownVariableType = "hint",
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
+  -- pyright = {},
+  ruff = {},
+  pylsp = {
     settings = {
-      basedpyright = {
-        analysis = {
-          diagnosticMode = "openFilesOnly",
-          inlayHints = {
-            callArgumentNames = true
-          },
-          diagnosticSeverityOverrides = {
-            reportAny = "hint",
-            reportExplicitAny = "hint",
-            reportImplicitStringConcatenation = "none",
-            reportUnknownMemberType = "hint",
-            reportUnknownVariableType = "hint",
-          },
+      pylsp = {
+        plugins = {
+          pycodestyle = { enabled = false },
+          pyslp_mypy = { enabled = true },
+          pyflakes = { enabled = false },
         },
       },
     },
   },
-  -- pyright = {},
-  ruff = {},
-  -- mypy = {},
   -- Gleam
   gleam = {},
   -- Elixir
@@ -137,5 +148,6 @@ for lsp, opts in pairs(servers) do
   opts.on_attach = custom_on_attach
   opts.capabilities = capabilities
 
-  lspconfig[lsp].setup(opts)
+  vim.lsp.config(lsp, opts)
+  vim.lsp.enable(lsp)
 end

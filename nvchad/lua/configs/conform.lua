@@ -12,7 +12,7 @@ local options = {
     css = { "prettierd" },
     html = { "prettierd" },
 
-    markdown = { "prettierd" },
+    -- markdown = { "prettierd" },
 
     haskell = { "fourmolu" },
 
