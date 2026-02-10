@@ -2,6 +2,9 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
+-- lsp
+map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code actions" })
+
 -- undo tree
 map("n", "<F6>", "<cmd> UndotreeToggle <CR>", { desc = "Toggle undo tree" })
 
@@ -43,7 +46,7 @@ map("n", "]R", function()
 end, { desc = "last trouble" })
 
 -- general
---
+
 -- ignore the formatexpr
 map("n", "Q", "gwap", { desc = "format paragraph" })
 map("x", "Q", "gw", { desc = "format selection" })

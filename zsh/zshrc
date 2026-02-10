@@ -155,3 +155,6 @@ export DEBEMAIL="maxy@debian.org"
 # asdf version manager
 path=( ~/.asdf/shims(/N) $path )
 export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_available
+
+# add system games
+path=( /usr/games(/N) $path )

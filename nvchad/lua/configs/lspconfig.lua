@@ -19,39 +19,56 @@ local servers = {
   ts_ls = {},
   biome = {},
   -- Python
-  -- basedpyright = {
+  basedpyright = {
+    -- painless config
+    settings = {
+      basedpyright = {
+        analysis = {
+          typeCheckingMode = "standard",
+          diagnosticMode = "openFilesOnly",
+          inlayHints = {
+            callArgumentNames = true
+          },
+          diagnosticSeverityOverrides = {
+            reportOptionalMemberAccess = "none",
+            reportAttributeAccessIssue = "none",
+          },
+        },
+      },
+    },
+    -- full in
+    -- settings = {
+    --   basedpyright = {
+    --     analysis = {
+    --       diagnosticMode = "openFilesOnly",
+    --       inlayHints = {
+    --         callArgumentNames = true
+    --       },
+    --       diagnosticSeverityOverrides = {
+    --         reportAny = "hint",
+    --         reportExplicitAny = "hint",
+    --         reportImplicitStringConcatenation = "none",
+    --         reportUnknownMemberType = "hint",
+    --         reportUnknownVariableType = "hint",
+    --       },
+    --     },
+    --   },
+    -- },
+  },
+  -- pyright = {},
+  ruff = {},
+  -- ty = {},
+  -- pylsp = {
   --   settings = {
-  --     basedpyright = {
-  --       analysis = {
-  --         diagnosticMode = "openFilesOnly",
-  --         inlayHints = {
-  --           callArgumentNames = true
-  --         },
-  --         diagnosticSeverityOverrides = {
-  --           reportAny = "hint",
-  --           reportExplicitAny = "hint",
-  --           reportImplicitStringConcatenation = "none",
-  --           reportUnknownMemberType = "hint",
-  --           reportUnknownVariableType = "hint",
-  --           reportImplicitStringConcatenation = "none",
-  --         },
+  --     pylsp = {
+  --       plugins = {
+  --         pycodestyle = { enabled = false },
+  --         pyslp_mypy = { enabled = true },
+  --         pyflakes = { enabled = false },
   --       },
   --     },
   --   },
   -- },
-  -- pyright = {},
-  ruff = {},
-  pylsp = {
-    settings = {
-      pylsp = {
-        plugins = {
-          pycodestyle = { enabled = false },
-          pyslp_mypy = { enabled = true },
-          pyflakes = { enabled = false },
-        },
-      },
-    },
-  },
   -- Gleam
   gleam = {},
   -- Elixir
@@ -80,6 +97,20 @@ local servers = {
       },
     },
   },
+  -- cmake
+  neocmake = {
+    single_file_support = true, -- suggested
+    init_options = {
+      format = {
+        enable = true
+      },
+      lint = {
+        enable = true
+      },
+    },
+  },
+  -- glsl
+  glsl_analyzer = {},
   -- java
   jdtls = {},
   -- lua
