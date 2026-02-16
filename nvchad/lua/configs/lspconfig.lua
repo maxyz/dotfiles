@@ -69,6 +69,8 @@ local servers = {
   --     },
   --   },
   -- },
+  -- django template
+  djlsp = {},
   -- Gleam
   gleam = {},
   -- Elixir
@@ -111,6 +113,8 @@ local servers = {
   },
   -- glsl
   glsl_analyzer = {},
+  -- Godot
+  gdscript = {},
   -- java
   jdtls = {},
   -- lua
