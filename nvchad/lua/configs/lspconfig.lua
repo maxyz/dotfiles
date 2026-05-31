@@ -19,45 +19,45 @@ local servers = {
   ts_ls = {},
   biome = {},
   -- Python
-  basedpyright = {
-    -- painless config
-    settings = {
-      basedpyright = {
-        analysis = {
-          typeCheckingMode = "standard",
-          diagnosticMode = "openFilesOnly",
-          inlayHints = {
-            callArgumentNames = true
-          },
-          diagnosticSeverityOverrides = {
-            reportOptionalMemberAccess = "none",
-            reportAttributeAccessIssue = "none",
-          },
-        },
-      },
-    },
-    -- full in
-    -- settings = {
-    --   basedpyright = {
-    --     analysis = {
-    --       diagnosticMode = "openFilesOnly",
-    --       inlayHints = {
-    --         callArgumentNames = true
-    --       },
-    --       diagnosticSeverityOverrides = {
-    --         reportAny = "hint",
-    --         reportExplicitAny = "hint",
-    --         reportImplicitStringConcatenation = "none",
-    --         reportUnknownMemberType = "hint",
-    --         reportUnknownVariableType = "hint",
-    --       },
-    --     },
-    --   },
-    -- },
-  },
+  -- basedpyright = {
+  --   -- painless config
+  --   settings = {
+  --     basedpyright = {
+  --       analysis = {
+  --         typeCheckingMode = "standard",
+  --         diagnosticMode = "openFilesOnly",
+  --         inlayHints = {
+  --           callArgumentNames = true
+  --         },
+  --         diagnosticSeverityOverrides = {
+  --           reportOptionalMemberAccess = "none",
+  --           reportAttributeAccessIssue = "none",
+  --         },
+  --       },
+  --     },
+  --   },
+  -- full in
+  -- settings = {
+  --   basedpyright = {
+  --     analysis = {
+  --       diagnosticMode = "openFilesOnly",
+  --       inlayHints = {
+  --         callArgumentNames = true
+  --       },
+  --       diagnosticSeverityOverrides = {
+  --         reportAny = "hint",
+  --         reportExplicitAny = "hint",
+  --         reportImplicitStringConcatenation = "none",
+  --         reportUnknownMemberType = "hint",
+  --         reportUnknownVariableType = "hint",
+  --       },
+  --     },
+  --   },
+  -- },
+  -- },
   -- pyright = {},
   ruff = {},
-  -- ty = {},
+  ty = {},
   -- pylsp = {
   --   settings = {
   --     pylsp = {

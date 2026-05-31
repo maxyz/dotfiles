@@ -11,24 +11,33 @@ map("n", "<F6>", "<cmd> UndotreeToggle <CR>", { desc = "Toggle undo tree" })
 -- telescope
 map("n", "<leader>cc", "<cmd> Telescope <CR>", { desc = "open telescope" })
 map("n", "<leader>fk", "<cmd> Telescope keymaps<CR>", { desc = "telescope keymaps" })
-map("n", "<leater>ft", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
+map("n", "<leater>ft", "<cmd> Telescope terms<CR>", { desc = "telescope pick hidden term" })
+map("n", "<leater>fr", "<cmd> Telescope resume<CR>", { desc = "telescope resume" })
 
 -- refactoring
-map({ "n", "x" }, "<leader>re", function() return require('refactoring').refactor('Extract Function') end,
+map({ "n", "x" }, "<leader>re", function() return require('refactoring').extract_func() end,
   { desc = "refactor function", expr = true })
-map({ "n", "x" }, "<leader>rf", function() return require('refactoring').refactor('Extract Function To File') end,
+map({ "n", "x" }, "<leader>re", function() return require('refactoring').extract_func() end,
+  { desc = "refactor function", expr = true })
+map({ "n", "x" }, "<leader>rf", function() return require('refactoring').extract_func_to_file() end,
   { desc = "refactor function to file", expr = true })
-map({ "n", "x" }, "<leader>rv", function() return require('refactoring').refactor('Extract Variable') end,
+map({ "n", "x" }, "<leader>rv", function() return require('refactoring').extract_var() end,
   { desc = "refactor variable", expr = true })
-map({ "n", "x" }, "<leader>rI", function() return require('refactoring').refactor('Inline Function') end,
+map({ "n", "x" }, "<leader>rI", function() return require('refactoring').inline_func() end,
   { desc = "refactor function to inline", expr = true })
-map({ "n", "x" }, "<leader>ri", function() return require('refactoring').refactor('Inline Variable') end,
+map({ "n", "x" }, "<leader>ri", function() return require('refactoring').inline_var() end,
   { desc = "refactor variable to inline", expr = true })
 
-map({ "n", "x" }, "<leader>rbb", function() return require('refactoring').refactor('Extract Block') end,
-  { desc = "refactor block", expr = true })
-map({ "n", "x" }, "<leader>rbf", function() return require('refactoring').refactor('Extract Block To File') end,
-  { desc = "refactor block to file", expr = true })
+
+map({ "n", "x" }, "<leader>rr", function()
+  -- this keymap doesn't select any textobject by default, so you may need to provide one each time you use it.
+  require("refactoring").select_refactor()
+end, { desc = "Select refactor" })
+
+-- map({ "n", "x" }, "<leader>rbb", function() return require('refactoring').refactor('Extract Block') end,
+--   { desc = "refactor block", expr = true })
+-- map({ "n", "x" }, "<leader>rbf", function() return require('refactoring').refactor('Extract Block To File') end,
+--   { desc = "refactor block to file", expr = true })
 
 -- trouble
 -- map("n", "<leader>tt", "<cmd> Trouble <cr>", { desc = "show troubles" })
