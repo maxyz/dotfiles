@@ -4,10 +4,7 @@ return {
     "stevearc/conform.nvim",
     --  for users those who want auto-save conform + lazyloading!
     event = "BufWritePre",
-    -- lazy = false,
-    config = function()
-      require "configs.conform"
-    end,
+    opts = require "configs.conform",
   },
   {
     "neovim/nvim-lspconfig",
@@ -60,16 +57,16 @@ return {
     opts = require "configs.mason",
   },
   -- Treesitter
-  {
-    "nvim-treesitter/nvim-treesitter",
-    -- branch = "main",
-    opts = require "configs.treesitter",
-    dependencies = {
-      {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-      },
-    },
-  },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   branch = "main",
+  --   opts = require "configs.treesitter",
+  --   dependencies = {
+  --     {
+  --       "nvim-treesitter/nvim-treesitter-textobjects",
+  --     },
+  --   },
+  -- },
   -- pretty diagnostics panel
   {
     "folke/trouble.nvim",
