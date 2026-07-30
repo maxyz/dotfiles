@@ -5,6 +5,9 @@ return {
     --  for users those who want auto-save conform + lazyloading!
     event = "BufWritePre",
     opts = require "configs.conform",
+    config = function()
+      require "configs.conform"
+    end,
   },
   {
     "neovim/nvim-lspconfig",
@@ -13,15 +16,15 @@ return {
     end,
   },
   -- some addictive plugins
-  { "tpope/vim-abolish",        lazy = false },
-  { "tpope/vim-repeat",         lazy = false },
-  { "tpope/vim-surround",       lazy = false },
-  { "tpope/vim-unimpaired",     lazy = false },
+  { "tpope/vim-abolish", lazy = false },
+  { "tpope/vim-repeat", lazy = false },
+  { "tpope/vim-surround", lazy = false },
+  { "tpope/vim-unimpaired", lazy = false },
   { "farmergreg/vim-lastplace", lazy = false },
   -- sudo write
-  { "lambdalisue/suda.vim",     lazy = false },
+  { "lambdalisue/suda.vim", lazy = false },
   -- git integration
-  { "tpope/vim-fugitive",       cmd = "Git" },
+  { "tpope/vim-fugitive", cmd = "Git" },
   -- ui
   -- git stuff
   {
@@ -33,7 +36,7 @@ return {
     cmd = { "UndotreeToggle" },
   },
   -- filetypes
-  { "towolf/vim-helm",               lazy = false },
+  { "towolf/vim-helm", lazy = false },
   -- use blink by default
   { import = "nvchad.blink.lazyspec" },
   {
