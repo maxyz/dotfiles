@@ -142,10 +142,10 @@ local servers = {
   -- Influx
   -- "flux_lsp",
   -- ocaml
-  ocamllsp = {
-    cmd = { "ocamllsp" },
-    filetypes = { "ocaml", "menhir", "ocamlinterface", "ocamllex", "reason", "dune" },
-  },
+  -- ocamllsp = {
+  --   cmd = { "ocamllsp" },
+  --   filetypes = { "ocaml", "menhir", "ocamlinterface", "ocamllex", "reason", "dune" },
+  -- },
   -- perl
   perlnavigator = {},
   -- terraform

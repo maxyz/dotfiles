@@ -55,11 +55,23 @@ vim.filetype.add { extension = { purs = "purescript" } }
 -- Do allow the python3 provider to load
 vim.g.loaded_python3_provider = nil
 
--- Avoid showing the hiding the text with the output
-vim.g.magma_automatically_open_output = false
-vim.g.magma_image_provider = "ueberzug"
+opt.relativenumber = false
+opt.cursorline = true
 
--- codeium in manual mode
-vim.g.codeium_manual = true
--- Disable tab in codeium
-vim.g.codeium_no_map_tab = false
+opt.completeopt = "menuone,popup,noselect,fuzzy,nosort"
+opt.shortmess:append("c")
+
+opt.pumheight = 10
+opt.pumblend = 10
+
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldlevel = 99
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
+  callback = function()
+    vim.hl.on_yank()
+  end,
+})
+

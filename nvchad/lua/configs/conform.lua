@@ -20,7 +20,7 @@ local options = {
 
     sh = { "shfmt" },
     java = { "clang-format" },
-    ocaml = { "ocamlformat" },
+    -- ocaml = { "ocamlformat" },
 
     -- terraform
     terraform = { "tofu_fmt" },
@@ -37,4 +37,4 @@ local options = {
   },
 }
 
-require("conform").setup(options)
+return options
